@@ -1,0 +1,26 @@
+{
+  "prefix": "h",
+  "commandPrefix": "h",
+  "defaultPrefix": "h",
+  "serverName": "DESA TULUS",
+  "botName": "Hansip",
+  "personaName": "Hansip Desa Tulus",
+  "gameEnabled": false,
+  "otoEnabled": false,
+  "otoGameEnabled": false,
+  "otoDisabled": true,
+  "disableOtoCommands": true,
+  "removeOtoGame": true,
+  "features": {
+    "oto": false,
+    "otoGame": false,
+    "game": false,
+    "adventureHub": false,
+    "antiScam": true,
+    "antiLink": true,
+    "afk": true,
+    "mabar": true,
+    "truthOrDare": true,
+    "sambungKata": true
+  }
+}

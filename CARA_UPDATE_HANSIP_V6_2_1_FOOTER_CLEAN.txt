@@ -1,0 +1,35 @@
+# CARA UPDATE HANSIP V6.2.1 FINAL
+
+Yang difiks:
+- Footer dobel dibersihkan.
+- Footer salah dibuang dari description embed.
+- Footer final cuma satu di bawah embed.
+- Warna embed tetap #7DBD77.
+
+Cara pasang:
+
+```bat
+cd /d "D:\"
+rmdir /s /q "Hansip"
+```
+
+Extract ZIP ini ke D:\ sampai jadi D:\Hansip.
+
+```bat
+cd /d "D:\Hansip"
+node --check index.js
+npm install
+git init
+git branch -M main
+git remote add origin https://github.com/baehaqieqi07-sketch/Hansip.git
+git add .
+git commit -m "clean duplicate Hansip footer final"
+git push -f origin main
+```
+
+Kalau remote sudah ada:
+
+```bat
+git remote set-url origin https://github.com/baehaqieqi07-sketch/Hansip.git
+git push -f origin main
+```

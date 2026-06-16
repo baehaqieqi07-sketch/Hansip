@@ -1,0 +1,30 @@
+{
+  "name": "hansip",
+  "version": "6.2.1",
+  "description": "Hansip Desa Tulus: duplicate footer final clean.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.0",
+    "@napi-rs/canvas": "^0.1.82",
+    "gifenc": "^1.0.3"
+  },
+  "optionalDependencies": {
+    "gifenc": "^1.0.3"
+  },
+  "displayName": "Hansip",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USERNAME/Hansip.git"
+  }
+}

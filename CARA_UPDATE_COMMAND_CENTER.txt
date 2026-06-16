@@ -1,0 +1,50 @@
+# CARA UPDATE BOT OT COMMAND CENTER v1.16.0
+
+## File yang boleh kamu replace
+
+- `index.js`
+- `package.json`
+- `railway.json`
+- `.gitignore`
+- `README.md`
+
+## File yang JANGAN direplace
+
+- `.env`
+- `config.json` aktif
+- folder `data`
+- `data/afk.json`
+- `data/mabar.json`
+- `data/anti-scam-log.json`
+- `data/sambung-kata.json`
+- `data/panel-state.json`
+- folder `backups`
+
+`config.example.json` hanya contoh tambahan untuk melihat struktur setting baru.
+
+## Tes lokal
+
+```bash
+npm install
+node --check index.js
+npm start
+```
+
+## Setelah online
+
+Coba command:
+
+```txt
+othelp
+otping
+otinfo
+otstatus
+```
+
+Kalau `otstatus` ditolak, isi Owner User ID lewat Railway Variables:
+
+```env
+OWNER_USER_ID=ID_DISCORD_KAMU
+```
+
+atau isi lewat dashboard Permission Center.

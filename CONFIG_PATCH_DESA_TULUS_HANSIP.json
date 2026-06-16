@@ -1,0 +1,15 @@
+{
+  "serverName": "DESA TULUS",
+  "botName": "Hansip",
+  "personaName": "Hansip Desa Tulus",
+  "antiScam": {
+    "deleteInviteLinks": false,
+    "allowDiscordInvites": true,
+    "deleteKnownScamScreenshot": true,
+    "knownScamImageHashEnabled": true,
+    "knownScamImageHammingThreshold": 14,
+    "knownScamImageHashes": [
+      "0e0ec00e0ec00e0e"
+    ]
+  }
+}

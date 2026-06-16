@@ -1,0 +1,49 @@
+# CARA UPDATE PREFIX H + HAPUS GAME v1.70.0
+
+Tujuan:
+- Prefix utama Hansip jadi `h`.
+- Semua game/OtO/Adventure Hub dimatikan.
+- Tidak reset data member.
+- Tidak hapus fitur server lain.
+
+File aman push:
+index.js
+package.json
+README.md
+config.example.json
+CONFIG_PATCH_PREFIX_H_NO_GAME.json
+CARA_UPDATE_PREFIX_H_NO_GAME.txt
+.gitignore
+assets
+data/.gitkeep
+
+Jangan timpa:
+.env
+config.json aktif
+data/*.json aktif
+afk.json
+anti-scam-log.json
+mabar.json
+sambung-kata.json
+oto-players.json
+oto-backup.json
+oto-items.json
+oto-npcs.json
+oto-assets.json
+
+Config aktif yang perlu disesuaikan manual jika pakai config.json lama:
+prefix: "h"
+commandPrefix: "h"
+defaultPrefix: "h"
+gameEnabled: false
+otoEnabled: false
+otoGameEnabled: false
+otoDisabled: true
+disableOtoCommands: true
+
+Test:
+hhelp
+hmabar / setup mabar sesuai command lama
+hafk / otafk jika command lama masih ada
+Ketik oth -> harus dibalas game dimatikan
+Ketik otb -> harus dibalas game dimatikan

@@ -1,0 +1,40 @@
+# CARA RENAME REPO JADI HANSIP
+
+Nama repo baru:
+Hansip
+
+Nama folder lokal yang disarankan:
+D:\Hansip
+
+Kalau repo GitHub sudah ada:
+1. Buka GitHub repo lama.
+2. Masuk Settings.
+3. Bagian Repository name, ganti menjadi:
+   Hansip
+4. Klik Rename.
+
+Setelah rename di GitHub, buka CMD/PowerShell di folder project:
+
+git remote set-url origin https://github.com/USERNAME/Hansip.git
+git remote -v
+
+Kalau folder lokal mau diganti:
+1. Tutup VS Code dulu.
+2. Rename folder project jadi:
+   D:\Hansip
+3. Buka lagi:
+   cd /d "D:\Hansip"
+   code .
+
+Push:
+git add .
+git commit -m "Rename project to Hansip"
+git push origin main
+
+Jangan push:
+.env
+config.json aktif
+data/*.json aktif
+data/hansip-premium-settings.json
+data/hansip-premium-warnings.json
+data/hansip-premium-notes.json

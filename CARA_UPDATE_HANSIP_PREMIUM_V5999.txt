@@ -1,0 +1,70 @@
+# CARA UPDATE HANSIP PREMIUM DESA MODE v5.9.99
+
+Tujuan:
+- Hansip jadi bot server besar.
+- Prefix tetap `h`.
+- Game tetap OFF.
+- Semua embed baru pakai footer:
+  <a:Desa_Tulus:1516424353934348299> DESA TULUS • ...
+- Tema perdesaan dan DESA TULUS.
+- Tidak reset data.
+
+File aman push:
+index.js
+package.json
+README.md
+config.example.json
+CONFIG_PATCH_HANSIP_PREMIUM_V5999.json
+CARA_UPDATE_HANSIP_PREMIUM_V5999.txt
+.gitignore
+assets
+data/.gitkeep
+
+Jangan timpa/push:
+.env
+config.json aktif
+data/*.json aktif
+data/hansip-premium-settings.json
+data/hansip-premium-warnings.json
+data/hansip-premium-notes.json
+afk.json
+anti-scam-log.json
+mabar.json
+sambung-kata.json
+
+Setup:
+hsetlog #channel-log
+hsetreport #channel-report
+hsetwelcome #channel-welcome
+hsetstaff @Staff
+
+Test:
+hhelp
+hping
+hstatus
+hdesa
+hmodules
+hconfig
+hlapor test laporan
+hsaran test saran
+hpoll apakah desa aman?
+hremind 1 cek pos ronda
+hclear 2
+hwarn @user spam
+hwarnings @user
+hnote @user catatan test
+hnotes @user
+hannounce #channel halo warga
+hslowmode 5
+hlock
+hunlock
+
+Game lama:
+oth
+otb
+otbj
+
+Target:
+- game tidak jalan.
+- prefix h aktif.
+- embed baru footer DESA TULUS sesuai request.

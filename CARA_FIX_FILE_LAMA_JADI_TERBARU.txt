@@ -1,0 +1,67 @@
+# CARA FIX FILE LAMA JADI TERBARU
+
+File ini sudah diperbarui menjadi versi terbaru:
+
+Nama repo:
+Hansip
+
+Version:
+5.9.99
+
+Prefix:
+h
+
+Game/OtO/Adventure Hub:
+OFF
+
+Tema:
+DESA TULUS / perdesaan / Hansip
+
+Footer semua embed baru:
+<a:Desa_Tulus:1516424353934348299> DESA TULUS • ...
+
+File aman push:
+index.js
+package.json
+README.md
+config.example.json
+CONFIG_PATCH_HANSIP_PREMIUM_V5999.json
+CARA_UPDATE_HANSIP_PREMIUM_V5999.txt
+CARA_RENAME_REPO_JADI_HANSIP.txt
+CARA_FIX_FILE_LAMA_JADI_TERBARU.txt
+.gitignore
+assets
+data/.gitkeep
+
+Jangan push/timpa:
+.env
+config.json aktif
+data/*.json aktif
+data/hansip-premium-settings.json
+data/hansip-premium-warnings.json
+data/hansip-premium-notes.json
+afk.json
+anti-scam-log.json
+mabar.json
+sambung-kata.json
+
+Test:
+node --check index.js
+npm install
+npm start
+
+Command test:
+hhelp
+hping
+hstatus
+hdesa
+hmodules
+hconfig
+
+Game lama:
+oth
+otb
+otbj
+
+Target:
+Game tidak jalan, prefix h aktif, footer embed Desa Tulus aktif.

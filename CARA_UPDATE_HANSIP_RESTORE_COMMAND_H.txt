@@ -1,0 +1,40 @@
+# CARA UPDATE HANSIP RESTORE COMMAND H
+
+1. Hapus folder Hansip lama yang konflik.
+2. Extract ZIP ini ke D:\ sampai menjadi D:\Hansip.
+3. Jalankan:
+
+```bat
+cd /d "D:\Hansip"
+node --check index.js
+npm install
+```
+
+4. Push bersih:
+
+```bat
+git init
+git branch -M main
+git remote add origin https://github.com/baehaqieqi07-sketch/Hansip.git
+git add .
+git commit -m "restore all Hansip commands with h prefix and footer fix"
+git push -f origin main
+```
+
+Kalau remote sudah ada:
+
+```bat
+git remote set-url origin https://github.com/baehaqieqi07-sketch/Hansip.git
+git push -f origin main
+```
+
+5. Railway redeploy.
+
+Test di Discord:
+- `hhelp`
+- `hafk mandi dulu`
+- `hping`
+- `hmabar`
+- `hnpc`
+- `hbj 100`
+- `hcf heads 100`

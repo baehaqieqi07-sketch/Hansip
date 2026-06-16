@@ -1,0 +1,51 @@
+# CARA UPDATE HANSIP DESA TULUS v1.69.0
+
+Tujuan:
+- Branding visible DESA TULUS.
+- Nama/peran bot Hansip Desa Tulus.
+- Tema perdesaan/hansip/ronda.
+- Anti-scam tambah deteksi link scam dan foto scam.
+- Invite Discord resmi tidak dihapus.
+- Data lama tidak reset.
+
+File aman push:
+index.js
+package.json
+README.md
+config.example.json
+CONFIG_PATCH_DESA_TULUS_HANSIP.json
+CARA_UPDATE_HANSIP_DESA_TULUS_ANTI_SCAM.txt
+.gitignore
+assets
+data/.gitkeep
+
+Jangan timpa:
+.env
+config.json aktif
+data/*.json aktif
+afk.json
+anti-scam-log.json
+mabar.json
+sambung-kata.json
+oto-players.json
+oto-backup.json
+oto-items.json
+oto-npcs.json
+oto-assets.json
+
+Config penting:
+serverName: DESA TULUS
+botName: Hansip
+personaName: Hansip Desa Tulus
+antiScam.deleteInviteLinks: false
+antiScam.allowDiscordInvites: true
+antiScam.antiScamLogChannelId: isi ID channel log anti-scam
+
+Hash foto scam referensi:
+0e0ec00e0ec00e0e
+
+Test:
+1. Invite Discord resmi -> tidak dihapus.
+2. Link scam/free nitro/claim reward -> dihapus.
+3. Foto scam referensi -> dihapus kalau mirip.
+4. othelp / otprogress / oth / otb -> branding DESA TULUS/Hansip.

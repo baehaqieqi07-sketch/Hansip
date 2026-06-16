@@ -1,0 +1,19 @@
+{
+  "prefix": "h",
+  "commandPrefix": "h",
+  "defaultPrefix": "h",
+  "serverName": "DESA TULUS",
+  "botName": "Hansip",
+  "personaName": "Hansip Desa Tulus",
+  "gameEnabled": false,
+  "otoEnabled": false,
+  "otoGameEnabled": false,
+  "otoDisabled": true,
+  "disableOtoCommands": true,
+  "hansipPremiumModeEnabled": true,
+  "hansipEmbedFooter": "<a:Desa_Tulus:1516424353934348299> DESA TULUS • ...",
+  "hansipLogChannelId": "",
+  "hansipReportChannelId": "",
+  "hansipStaffRoleId": "",
+  "hansipWelcomeChannelId": ""
+}
