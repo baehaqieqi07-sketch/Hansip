@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "6.2.1",
-  "description": "Hansip Desa Tulus: duplicate footer final clean.",
+  "version": "6.3.0",
+  "description": "Pak Hansip Desa Tulus dengan activity Discord otomatis berganti setiap 15 detik.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

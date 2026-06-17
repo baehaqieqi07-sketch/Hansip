@@ -33,8 +33,95 @@ const {
   PermissionFlagsBits,
   MessageFlags,
   ChannelType,
-  AttachmentBuilder
+  AttachmentBuilder,
+  ActivityType
 } = require("discord.js");
+
+
+/* =========================
+   PAK HANSIP ACTIVITY ROTATION V6.3.0
+========================= */
+const PAK_HANSIP_ACTIVITIES = [
+  {
+    name: "👀 Memantau Gerak-Gerik Warga",
+    type: ActivityType.Watching
+  },
+  {
+    name: "🛡️ Siaga Menjaga Lingkungan",
+    type: ActivityType.Playing
+  },
+  {
+    name: "🔦 Ronda Dulu, Ngopi Nanti",
+    type: ActivityType.Listening
+  },
+  {
+    name: "📢 Tertib Sebelum Ditegur",
+    type: ActivityType.Watching
+  }
+];
+
+let pakHansipActivityInterval = null;
+let pakHansipActivityIndex = 0;
+
+function startPakHansipActivityRotation(client) {
+  if (!client?.user || PAK_HANSIP_ACTIVITIES.length === 0) {
+    return;
+  }
+
+  if (pakHansipActivityInterval) {
+    clearInterval(pakHansipActivityInterval);
+    pakHansipActivityInterval = null;
+  }
+
+  // Setiap bot benar-benar online, mulai lagi dari activity pertama.
+  pakHansipActivityIndex = 0;
+
+  const updatePakHansipActivity = () => {
+    if (!client?.user) {
+      return;
+    }
+
+    const activity =
+      PAK_HANSIP_ACTIVITIES[
+        pakHansipActivityIndex % PAK_HANSIP_ACTIVITIES.length
+      ];
+
+    try {
+      client.user.setPresence({
+        status: "online",
+        activities: [
+          {
+            name: activity.name,
+            type: activity.type
+          }
+        ]
+      });
+
+      pakHansipActivityIndex =
+        (pakHansipActivityIndex + 1) %
+        PAK_HANSIP_ACTIVITIES.length;
+    } catch (error) {
+      console.error(
+        "[PAK HANSIP ACTIVITY] Gagal mengganti activity:",
+        error
+      );
+    }
+  };
+
+  // Activity pertama langsung tampil, tidak menunggu 15 detik.
+  updatePakHansipActivity();
+
+  pakHansipActivityInterval = setInterval(
+    updatePakHansipActivity,
+    15_000
+  );
+
+  if (typeof pakHansipActivityInterval.unref === "function") {
+    pakHansipActivityInterval.unref();
+  }
+}
+/* END PAK HANSIP ACTIVITY ROTATION V6.3.0 */
+
 
 const CONFIG_FILE = path.join(__dirname, "config.json");
 const DATA_DIR = path.join(__dirname, "data");
@@ -8350,6 +8437,7 @@ function dashboardPermissionCenterHtml() {
    EVENTS
 ========================= */
 client.once("clientReady", async () => {
+  startPakHansipActivityRotation(client);
   console.log(`✅ ${client.user.tag} online sebagai Hansip`);
   startDashboardCacheRefresh().catch(() => null);
   setInterval(() => startDashboardCacheRefresh().catch(() => null), DASHBOARD_DISCORD_CACHE_TTL);

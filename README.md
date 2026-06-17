@@ -25,3 +25,14 @@ GUILD_ID=ISI_ID_SERVER_DESA_TULUS
 NODE_ENV=production
 DASHBOARD_ENABLED=false
 ```
+
+## Activity otomatis Pak Hansip
+
+Saat bot online, activity tampil berurutan setiap 15 detik:
+
+1. `👀 Memantau Gerak-Gerik Warga` — Watching
+2. `🛡️ Siaga Menjaga Lingkungan` — Playing
+3. `🔦 Ronda Dulu, Ngopi Nanti` — Listening
+4. `📢 Tertib Sebelum Ditegur` — Watching
+
+Activity pertama langsung tampil ketika event `clientReady` berjalan. Rotasi memakai satu interval yang aman dan status bot tetap `online`.

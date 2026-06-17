@@ -1,0 +1,48 @@
+LAPORAN UPDATE ACTIVITY PAK HANSIP V6.3.0
+
+FILE YANG DIUBAH
+- index.js
+- package.json
+- package-lock.json (sinkronisasi versi)
+- README.md
+- File laporan ini ditambahkan
+
+LOKASI KODE
+- ActivityType ditambahkan ke import discord.js yang sudah ada.
+- PAK_HANSIP_ACTIVITIES dan fungsi startPakHansipActivityRotation(client)
+  ditambahkan setelah import discord.js, sebelum konstanta CONFIG_FILE.
+- startPakHansipActivityRotation(client) dipanggil di dalam event
+  client.once("clientReady", async () => { ... }) yang sudah ada.
+
+ACTIVITY
+1. 👀 Memantau Gerak-Gerik Warga — Watching
+2. 🛡️ Siaga Menjaga Lingkungan — Playing
+3. 🔦 Ronda Dulu, Ngopi Nanti — Listening
+4. 📢 Tertib Sebelum Ditegur — Watching
+
+INTERVAL
+- 15_000 milidetik / 15 detik.
+- Activity pertama langsung tampil saat bot ready.
+- Interval lama dibersihkan sebelum interval baru dibuat.
+- Hanya satu interval rotasi activity yang dipakai.
+
+PRESENCE LAMA
+- Tidak ditemukan setActivity() atau setPresence() lama pada project sebelum update.
+- Tidak ada kode presence lama yang perlu dihapus.
+- Event ready baru tidak dibuat.
+
+CARA MENGGANTI ACTIVITY
+- Edit isi PAK_HANSIP_ACTIVITIES di index.js.
+- Jangan hapus ActivityType pada setiap item.
+
+CARA MENGUBAH INTERVAL
+- Ubah angka 15_000 pada setInterval.
+- Contoh 30 detik: 30_000.
+
+KEAMANAN FITUR/DATA
+- Token tidak diubah.
+- Prefix tidak diubah.
+- Command tidak diubah.
+- Dashboard tidak diubah.
+- Database dan file data aktif tidak diubah atau direset.
+- Fitur lama tetap dipertahankan.
