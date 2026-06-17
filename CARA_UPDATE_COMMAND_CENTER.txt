@@ -15,7 +15,6 @@
 - folder `data`
 - `data/afk.json`
 - `data/mabar.json`
-- `data/anti-scam-log.json`
 - `data/sambung-kata.json`
 - `data/panel-state.json`
 - folder `backups`

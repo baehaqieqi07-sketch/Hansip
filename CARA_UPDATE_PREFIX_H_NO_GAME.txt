@@ -22,7 +22,6 @@ Jangan timpa:
 config.json aktif
 data/*.json aktif
 afk.json
-anti-scam-log.json
 mabar.json
 sambung-kata.json
 oto-players.json

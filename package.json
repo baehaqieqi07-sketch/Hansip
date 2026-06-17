@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "6.4.0",
-  "description": "Pak Hansip Desa Tulus dengan Custom Status Discord otomatis setiap 15 detik.",
+  "version": "6.5.0",
+  "description": "Pak Hansip Desa Tulus tanpa anti-scam; fitur lain tetap dipertahankan.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

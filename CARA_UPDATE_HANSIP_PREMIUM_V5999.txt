@@ -28,7 +28,6 @@ data/hansip-premium-settings.json
 data/hansip-premium-warnings.json
 data/hansip-premium-notes.json
 afk.json
-anti-scam-log.json
 mabar.json
 sambung-kata.json
 

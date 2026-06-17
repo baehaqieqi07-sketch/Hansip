@@ -4,7 +4,6 @@ Tujuan:
 - Hansip jadi bot server besar.
 - Prefix tetap `h`.
 - Semua game tetap OFF.
-- Fokus fitur server, staff, warga, anti-scam, utility.
 - Tidak reset data.
 
 File aman push:
@@ -23,7 +22,6 @@ Jangan timpa:
 config.json aktif
 data/*.json aktif
 afk.json
-anti-scam-log.json
 mabar.json
 sambung-kata.json
 oto-players.json

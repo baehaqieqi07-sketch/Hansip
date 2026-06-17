@@ -127,7 +127,6 @@ const DATA_DIR = path.join(__dirname, "data");
 const DATA_FILE = path.join(DATA_DIR, "mabar.json");
 const AFK_DATA_FILE = path.join(DATA_DIR, "afk.json");
 const SAMBUNG_DATA_FILE = path.join(DATA_DIR, "sambung-kata.json");
-const ANTISCAM_LOG_FILE = path.join(DATA_DIR, "anti-scam-log.json");
 const PANEL_STATE_FILE = path.join(DATA_DIR, "panel-state.json");
 const GAME_DATA_FILE = path.join(DATA_DIR, "game-data.json");
 const GAME_PLAYERS_FILE = path.join(DATA_DIR, "game-players.json");
@@ -201,7 +200,6 @@ const DEFAULT_CONFIG = {
   sambungKataShowProgress: true,
   ownerUserId: "",
   ownerLogChannelId: "",
-  antiScamLogChannelId: "",
   suggestionChannelId: "",
   panelChannelId: "",
   staffChannelId: "",
@@ -222,8 +220,6 @@ const DEFAULT_CONFIG = {
     afk: true,
     mabar: true,
     saran: false,
-    antiScam: true,
-    antiLink: true,
     panel: true,
     dashboard: true,
     truthOrDare: true,
@@ -391,201 +387,6 @@ const DEFAULT_CONFIG = {
   otoMinBet: 10,
   otoBlackjackMaxBet: 50000,
   otoCoinFlipMaxBet: 50000,
-  antiScam: {
-    enabled: true,
-    deleteSuspiciousLinks: true,
-    deleteSuspiciousImages: true,
-    deletePhishingLinks: true,
-    deletePhishingImages: true,
-    blockUrlShorteners: true,
-    skipAdmins: false,
-    deleteInviteLinks: false,
-    imageStrictMode: false,
-    maxMentions: 8,
-    warnUser: true,
-    ignoredChannelIds: [],
-    protectedChannelIds: [],
-    exemptRoleIds: [],
-    allowedDomains: [
-      "discord.com",
-      "discord.gg",
-      "youtube.com",
-      "youtu.be",
-      "google.com",
-      "github.com",
-      "railway.app",
-      "roblox.com",
-      "open.spotify.com",
-      "tiktok.com",
-      "instagram.com"
-    ],
-    blockedDomains: [
-      "discord-nitro",
-      "discordnitro",
-      "nitro-free",
-      "nitro-gift",
-      "nitrogift",
-      "free-nitro",
-      "claim-nitro",
-      "discord-gift",
-      "discordgift",
-      "discord-verify",
-      "verify-discord",
-      "discord-login",
-      "login-discord",
-      "discordapp-login",
-      "discord-security",
-      "discord-support",
-      "steamcommunit",
-      "steamcomrnunity",
-      "steancommunity",
-      "steampowered-gift",
-      "discrod",
-      "discorcl",
-      "dlscord",
-      "dicsord",
-      "disc0rd",
-      "free-robux",
-      "robux-free",
-      "roblox-free",
-      "airdrop-free",
-      "claim-gift",
-      "free-gift",
-      "gift-claim",
-      "wallet-verify",
-      "verify-wallet",
-      "phishing",
-      "pishing",
-      "phising"
-    ],
-    suspiciousKeywords: [
-      "free nitro",
-      "nitro gratis",
-      "claim nitro",
-      "discord gift",
-      "steam gift",
-      "free robux",
-      "robux gratis",
-      "claim reward",
-      "hadiah gratis",
-      "airdrop",
-      "wallet verify",
-      "verify wallet",
-      "login hadiah",
-      "klik link ini",
-      "ambil hadiah",
-      "giveaway nitro",
-      "skin gratis",
-      "diamond gratis",
-      "akun gratis",
-      "kode redeem gratis",
-      "link phishing",
-      "link pishing",
-      "link phising",
-      "phishing link",
-      "pishing link",
-      "phising link",
-      "verify discord",
-      "verifikasi discord",
-      "login discord",
-      "security check",
-      "account verify",
-      "verify account",
-      "akun verifikasi",
-      "akun kena banned",
-      "scan qr",
-      "kode qr",
-      "qr login",
-      "login steam",
-      "steam login",
-      "wallet connect",
-      "connect wallet",
-      "ambil reward",
-      "claim gift",
-      "hadiah discord",
-      "gift discord"
-    ],
-    phishingKeywords: [
-      "phishing",
-      "pishing",
-      "phising",
-      "verify discord",
-      "verifikasi discord",
-      "discord verify",
-      "login discord",
-      "discord login",
-      "account verify",
-      "verify account",
-      "security check",
-      "scan qr",
-      "kode qr",
-      "qr login",
-      "wallet verify",
-      "verify wallet",
-      "connect wallet",
-      "steam login",
-      "login steam",
-      "claim gift",
-      "claim reward",
-      "free nitro",
-      "nitro gratis",
-      "free robux"
-    ],
-    urlShorteners: [
-      "bit.ly",
-      "tinyurl.com",
-      "t.co",
-      "cutt.ly",
-      "is.gd",
-      "s.id",
-      "rebrand.ly",
-      "shorturl.at",
-      "rb.gy",
-      "ln.run",
-      "grabify.link"
-    ],
-    suspiciousTlds: [
-      "zip",
-      "mov",
-      "top",
-      "xyz",
-      "click",
-      "monster",
-      "cyou",
-      "icu",
-      "tk",
-      "ml",
-      "ga",
-      "cf",
-      "gq"
-    ],
-    imageKeywords: [
-      "nitro",
-      "robux",
-      "airdrop",
-      "wallet",
-      "claim",
-      "giveaway",
-      "hadiah",
-      "redeem",
-      "phishing",
-      "pishing",
-      "phising",
-      "scam",
-      "login",
-      "verify",
-      "verifikasi",
-      "security",
-      "qrcode",
-      "qr-code",
-      "qr",
-      "discord-login",
-      "discord-verify",
-      "wallet-verify",
-      "steam-login"
-    ],
-    ownerNotifyTemplate: "🛡️ Anti-Scam OT menghapus pesan mencurigakan dari {user} di {channel}. Alasan: {reason}"
-  },
   dashboard: {
     title: "Hansip Control Center",
     subtitle: "Dashboard DESA TULUS yang rapi, nyaman, dan mudah diedit.",
@@ -988,7 +789,7 @@ Integrasi:
    - Semua setting game Hansip dikumpulkan dalam satu dashboard rapi.
    - Mode visual tetap emoji-only: tanpa image, tanpa Canvas, tanpa AttachmentBuilder, tanpa .setImage().
    - Dashboard server-rendered supaya tetap bisa dipakai walau JS browser error.
-   - Tidak menghapus fitur lama Hansip: AFK, Mabar, Truth or Dare, Sambung Kata, Anti-Scam, MongoDB.
+   - Tidak menghapus fitur lama Hansip: AFK, Mabar, Truth or Dare, Sambung Kata, dan MongoDB.
 ========================= */
 
 function otoDashboardModuleListV137() {
@@ -1835,7 +1636,7 @@ function saveConfig(nextConfig) {
 /* =========================
    MONGODB ANTI RESET STORAGE
    - Discord tetap jadi sumber data member/channel/role.
-   - MongoDB menyimpan data bot: config dashboard, AFK, sambung kata, mabar, log anti-scam.
+   - MongoDB menyimpan data bot: config dashboard, AFK, sambung kata, dan mabar.
    - Kalau MONGODB_URI kosong/error, bot tetap jalan pakai JSON lokal sebagai fallback.
 ========================= */
 const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.MONGO_URL || "";
@@ -1873,7 +1674,6 @@ const PERSISTENCE_FILES = [
   { key: "otoAssets", file: OTO_ASSETS_FILE, fallback: {} },
   { key: "otoBattles", file: OTO_BATTLES_FILE, fallback: {} },
   { key: "otoArcade", file: OTO_ARCADE_FILE, fallback: {} },
-  { key: "antiScamLog", file: ANTISCAM_LOG_FILE, fallback: [] }
 ];
 
 let mongoStore = null;
@@ -2065,7 +1865,7 @@ function loginPage(error = "") {
 <style>
 :root{--bg:#060813;--panel:rgba(13,18,35,.86);--line:rgba(255,255,255,.14);--text:#f8fbff;--muted:rgba(248,251,255,.66);--danger:#ff5d7a;--cyan:#35d8ff;--purple:#8b5cf6;--pink:#ff6bd6;--green:#43f0a3}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:Inter,system-ui,Segoe UI,Arial;background:radial-gradient(circle at 18% -10%,rgba(139,92,246,.34),transparent 35%),radial-gradient(circle at 90% 8%,rgba(53,216,255,.22),transparent 34%),radial-gradient(circle at 50% 110%,rgba(67,240,163,.13),transparent 42%),linear-gradient(180deg,#050711,#091020 48%,#050711);color:var(--text);padding:20px;overflow:hidden}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 80%);pointer-events:none}.card{position:relative;width:min(480px,94vw);background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.055));border:1px solid var(--line);border-radius:32px;padding:32px;box-shadow:0 34px 110px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(20px)}.card:after{content:"";position:absolute;right:-80px;top:-80px;width:180px;height:180px;border-radius:999px;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 63%)}.logo{width:76px;height:76px;border-radius:26px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));border:1px solid rgba(255,255,255,.18);margin-bottom:18px;font-size:36px;box-shadow:0 20px 60px rgba(139,92,246,.35)}.title{font-size:30px;font-weight:1000;letter-spacing:-1px;margin:0}.sub{color:var(--muted);line-height:1.65;font-weight:650}input{width:100%;padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.14);background:rgba(4,8,20,.58);color:var(--text);outline:none}input:focus{border-color:rgba(53,216,255,.65);box-shadow:0 0 0 4px rgba(53,216,255,.14)}button{width:100%;margin-top:14px;padding:16px;border:0;border-radius:18px;color:white;background:linear-gradient(135deg,var(--purple),var(--cyan));font-weight:1000;cursor:pointer;box-shadow:0 16px 45px rgba(53,216,255,.22)}button:hover{filter:brightness(1.05);transform:translateY(-1px)}.warn{background:rgba(255,93,122,.10);color:#ffd1dc;border:1px solid rgba(255,93,122,.25);padding:12px;border-radius:18px}.err{color:#ffd1dc;font-weight:800}.small{font-size:13px;color:var(--muted);line-height:1.6}code{background:rgba(0,0,0,.28);padding:2px 6px;border-radius:7px;color:#b8f4ff}
-</style></head><body><main class="card"><div class="logo">🤖</div><h1 class="title">Hansip Dashboard</h1><p class="sub">Login untuk mengatur fitur DESA TULUS, Anti-Scam, channel, role, dan placeholder.</p>${defaultPassword ? `<p class="warn">Dashboard memakai password default: <b>otpanel</b>. Nanti ganti lewat Railway Variables: <code>DASHBOARD_PASSWORD</code> supaya lebih aman.</p>` : (!passwordReady ? `<p class="warn">DASHBOARD_PASSWORD belum diisi di Railway Variables.</p>` : "")}${error ? `<p class="err">${htmlEscape(error)}</p>` : ""}<form method="post" action="/dashboard/login"><input type="password" name="password" placeholder="Masukkan password dashboard" ${passwordReady ? "" : "disabled"} /><button ${passwordReady ? "" : "disabled"}>Masuk Dashboard</button></form><p class="small">Railway Variables yang disarankan: <code>DASHBOARD_PASSWORD</code>, <code>DISCORD_TOKEN</code>, <code>GUILD_ID</code>.</p></main></body></html>`;
+</style></head><body><main class="card"><div class="logo">🤖</div><h1 class="title">Hansip Dashboard</h1><p class="sub">Login untuk mengatur fitur DESA TULUS, channel, role, dan placeholder.</p>${defaultPassword ? `<p class="warn">Dashboard memakai password default: <b>otpanel</b>. Nanti ganti lewat Railway Variables: <code>DASHBOARD_PASSWORD</code> supaya lebih aman.</p>` : (!passwordReady ? `<p class="warn">DASHBOARD_PASSWORD belum diisi di Railway Variables.</p>` : "")}${error ? `<p class="err">${htmlEscape(error)}</p>` : ""}<form method="post" action="/dashboard/login"><input type="password" name="password" placeholder="Masukkan password dashboard" ${passwordReady ? "" : "disabled"} /><button ${passwordReady ? "" : "disabled"}>Masuk Dashboard</button></form><p class="small">Railway Variables yang disarankan: <code>DASHBOARD_PASSWORD</code>, <code>DISCORD_TOKEN</code>, <code>GUILD_ID</code>.</p></main></body></html>`;
 }
 
 const SENSITIVE_DASHBOARD_KEY = /(token|secret|password|pass|api[_-]?key|apikey|authorization|cookie|session|mongodb|mongo_uri|mongoUrl|databaseUrl|uri)$/i;
@@ -2187,35 +1987,13 @@ function dashboardFormToConfig(body = {}) {
     "gameAutoEventTimes",
     "gameDisabledModes",
     "gameDisabledModules",
-    "antiScam.ignoredChannelIds",
-    "antiScam.protectedChannelIds",
-    "antiScam.exemptRoleIds",
-    "antiScam.allowedDomains",
-    "antiScam.blockedDomains",
-    "antiScam.suspiciousKeywords",
-    "antiScam.phishingKeywords",
-    "antiScam.imageKeywords",
-    "antiScam.urlShorteners",
-    "antiScam.suspiciousTlds"
   ]);
   const boolFields = new Set([
     "afkRemoveOnMessage",
     "sambungKataShowProgress",
-    "antiScam.enabled",
-    "antiScam.deleteSuspiciousLinks",
-    "antiScam.deleteSuspiciousImages",
-    "antiScam.deletePhishingLinks",
-    "antiScam.deletePhishingImages",
-    "antiScam.blockUrlShorteners",
-    "antiScam.skipAdmins",
-    "antiScam.deleteInviteLinks",
-    "antiScam.imageStrictMode",
-    "antiScam.warnUser",
     "features.afk",
     "features.mabar",
     "features.saran",
-    "features.antiScam",
-    "features.antiLink",
     "features.panel",
     "features.dashboard",
     "features.truthOrDare",
@@ -2300,7 +2078,6 @@ function dashboardFormToConfig(body = {}) {
   const numberFields = new Set([
     "sambungKataTargetWords",
     "sambungKataMaxWordsPerMessage",
-    "antiScam.maxMentions",
     "commandCenter.panelAntiSpamMs",
     "commandCenter.suggestionCooldownMs",
     "gameCooldownMs",
@@ -2339,7 +2116,7 @@ function dashboardFormToConfig(body = {}) {
 }
 
 function dashboardTabFromReq(req) {
-  const allowed = new Set(["home", "oto", "game", "commands", "permissions", "mabar", "truth", "afk", "sambung", "antiscam", "channels", "roles", "dashboard", "json", "logs", "status", "actions"]);
+  const allowed = new Set(["home", "oto", "game", "commands", "permissions", "mabar", "truth", "afk", "sambung", "channels", "roles", "dashboard", "json", "logs", "status", "actions"]);
   const tab = String(req.query.tab || "home").toLowerCase();
   return allowed.has(tab) ? tab : "home";
 }
@@ -2377,7 +2154,6 @@ function dashboardFeatureItems() {
     { key: "truth", icon: "🎭", title: "Truth or Dare", desc: "Panel Truth/Dare bahasa Indonesia.", active: Boolean(config.truthOrDareChannelId), tab: "truth" },
     { key: "afk", icon: "😴", title: "AFK / otafk", desc: "Status AFK, prefix nickname, dan auto remove saat chat.", active: Boolean(config.afkChannelId), tab: "afk" },
     { key: "sambung", icon: "📖", title: "Sambung Kata", desc: "Game sambung kata otomatis sampai target kata.", active: Boolean(config.sambungKataChannelId), tab: "sambung" },
-    { key: "antiscam", icon: "🛡️", title: "Anti-Scam", desc: "Hapus link/gambar mencurigakan dan kirim log.", active: Boolean(config.antiScam?.enabled !== false), tab: "antiscam" },
     { key: "mongo", icon: "💾", title: "MongoDB Anti Reset", desc: "Data bot disimpan permanen agar aman dari reset.", active: Boolean(mongoReady), tab: "status" },
     { key: "discord", icon: "🗺️", title: "Discord Map", desc: "Channel dan role server masuk dashboard.", active: true, tab: "channels" },
     { key: "dashboard", icon: "🎨", title: "Dashboard", desc: "Tema, judul, preview, dan config aman.", active: true, tab: "dashboard" }
@@ -2395,7 +2171,6 @@ function dashboardMenu(activeTab) {
     ["truth", "🎭", "Truth/Dare"],
     ["afk", "😴", "AFK"],
     ["sambung", "📖", "Sambung Kata"],
-    ["antiscam", "🛡️", "Anti-Scam"],
     ["channels", "🗺️", "Channel Settings"],
     ["roles", "🎭", "Role Settings"],
     ["dashboard", "🎨", "Dashboard Theme"],
@@ -2409,7 +2184,7 @@ function dashboardMenu(activeTab) {
 function dashboardChannelTable(discord) {
   const channels = discord.channels || [];
   if (!channels.length) return `<div class="empty">Channel belum kebaca. Klik tombol Refresh Discord, tapi form tetap bisa diedit manual.</div>`;
-  const options = ["mabarChannelId", "truthOrDareChannelId", "afkChannelId", "sambungKataChannelId", "ownerLogChannelId", "antiScamLogChannelId"];
+  const options = ["mabarChannelId", "truthOrDareChannelId", "afkChannelId", "sambungKataChannelId", "ownerLogChannelId"];
   return `<div class="table-wrap"><table><thead><tr><th>Channel</th><th>Type</th><th>ID</th><th>Copy</th></tr></thead><tbody>${channels.map(ch => `<tr><td>#${htmlEscape(ch.name)}</td><td>${htmlEscape(ch.typeName || ch.type)}</td><td class="mono">${htmlEscape(ch.id)}</td><td><button class="mini" type="button" onclick="copyText('${htmlEscape(ch.id)}')">Copy ID</button></td></tr>`).join("")}</tbody></table></div><p class="note">Pakai ID di atas ke form channel. Tombol copy memakai JavaScript kecil, tapi navigasi dan simpan tetap jalan tanpa JavaScript.</p>`;
 }
 
@@ -2463,29 +2238,6 @@ function dashboardContent(tab, notice = "") {
     dashboardInput("sambungKataMaxWordsPerMessage", "Maks kata per pesan", { type: "number" }),
     dashboardInput("sambungKataShowProgress", "Tampilkan Progress", { type: "checkbox", wide: true })
   ].join(""), "📖 Sambung Kata Settings") + `<div class="panel"><h3>Data Sambung Kata</h3><pre class="codebox">${htmlEscape(JSON.stringify(readJsonFile(SAMBUNG_DATA_FILE, {}), null, 2))}</pre></div>`;
-
-  if (tab === "antiscam") return noticeBox + dashboardSaveForm("antiscam", [
-    dashboardInput("antiScam.enabled", "Anti-Scam Aktif", { type: "checkbox" }),
-    dashboardInput("antiScam.deleteSuspiciousLinks", "Hapus Link Mencurigakan", { type: "checkbox" }),
-    dashboardInput("antiScam.deleteSuspiciousImages", "Hapus Gambar Mencurigakan", { type: "checkbox" }),
-    dashboardInput("antiScam.deletePhishingLinks", "Anti Link Phishing", { type: "checkbox" }),
-    dashboardInput("antiScam.deletePhishingImages", "Anti Foto Phishing", { type: "checkbox" }),
-    dashboardInput("antiScam.blockUrlShorteners", "Blok Link Shortener Mencurigakan", { type: "checkbox" }),
-    dashboardInput("antiScam.skipAdmins", "Skip Admin dari Anti-Scam", { type: "checkbox" }),
-    dashboardInput("antiScam.deleteInviteLinks", "Hapus Invite Discord", { type: "checkbox" }),
-    dashboardInput("antiScam.imageStrictMode", "Strict Visual Mode", { type: "checkbox" }),
-    dashboardInput("antiScam.warnUser", "Warn User", { type: "checkbox" }),
-    dashboardInput("antiScam.maxMentions", "Max Mention", { type: "number" }),
-    dashboardInput("antiScamLogChannelId", "Channel Log Anti-Scam"),
-    dashboardInput("antiScam.allowedDomains", "Allowed Domains", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.blockedDomains", "Blocked Domains", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.suspiciousKeywords", "Keyword Scam", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.phishingKeywords", "Keyword Phishing", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.imageKeywords", "Keyword Gambar Scam/Phishing", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.urlShorteners", "Link Shortener Dipantau", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.suspiciousTlds", "TLD Mencurigakan", { type: "textarea", wide: true }),
-    dashboardInput("antiScam.ownerNotifyTemplate", "Template Notif Owner", { type: "textarea", wide: true })
-  ].join(""), "🛡️ Anti-Scam Settings");
 
   if (tab === "channels") return noticeBox + dashboardSaveForm("channels", [
     dashboardInput("gameChannelId", "Channel Hansip"),
@@ -2699,12 +2451,8 @@ async function getDiscordDashboardData(options = {}) {
   });
 }
 
-function readScamLogs() {
-  return readJsonFile(ANTISCAM_LOG_FILE, []);
-}
 
 function getDashboardStats() {
-  const logs = readScamLogs();
   const featureStatus = {
     commands: true,
     mabar: Boolean(config.mabarChannelId),
@@ -2712,13 +2460,10 @@ function getDashboardStats() {
     truthOrDare: Boolean(config.truthOrDareChannelId),
     afk: Boolean(config.afkChannelId),
     sambungKata: Boolean(config.sambungKataChannelId),
-    antiScam: Boolean(config.antiScam?.enabled !== false),
     dashboard: true,
     mongoDb: Boolean(mongoReady)
   };
   return {
-    deletedScam: logs.length,
-    recentLogs: logs.slice(-12).reverse(),
     activity: dashboardDiscordActivity.slice(0, 12),
     uptimeSec: Math.floor(process.uptime()),
     featureStatus,
@@ -4371,321 +4116,6 @@ async function sendMabarPanel(interaction) {
 }
 
 /* =========================
-   ANTI-SCAM GUARD
-   Hapus link/foto scam + notif owner
-========================= */
-function antiScamConfig() {
-  const anti = config.antiScam || DEFAULT_CONFIG.antiScam;
-  if (config.features?.antiScam === false) return { ...anti, enabled: false };
-  return anti;
-}
-
-function normalizeScanText(value) {
-  return String(value || "")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u200B-\u200D\uFEFF]/g, "")
-    .replace(/[`*_~|>]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function listIncludesText(text, list) {
-  const clean = normalizeScanText(text);
-  return (list || []).some(item => item && clean.includes(normalizeScanText(item)));
-}
-
-function normalizePhishingText(value) {
-  return normalizeScanText(value)
-    .replace(/[@]/g, "a")
-    .replace(/[0]/g, "o")
-    .replace(/[1!|]/g, "i")
-    .replace(/[3]/g, "e")
-    .replace(/[4]/g, "a")
-    .replace(/[5$]/g, "s")
-    .replace(/[7]/g, "t");
-}
-
-function listIncludesPhishingText(text, list) {
-  const clean = normalizePhishingText(text);
-  const compact = clean.replace(/[^a-z0-9]+/g, "");
-  return (list || []).some(item => {
-    const key = normalizePhishingText(item);
-    const keyCompact = key.replace(/[^a-z0-9]+/g, "");
-    return key && (clean.includes(key) || (keyCompact && compact.includes(keyCompact)));
-  });
-}
-
-function normalizeUrlText(content) {
-  return String(content || "")
-    .replace(/hxxps?:\/\//gi, match => match.toLowerCase().startsWith("hxxps") ? "https://" : "http://")
-    .replace(/\[\.\]|\(\.\)|\{\.\}/g, ".")
-    .replace(/\s+dot\s+/gi, ".")
-    .replace(/\s*\.\s*/g, ".");
-}
-
-function extractUrls(content) {
-  const text = normalizeUrlText(content);
-  const matches = text.match(/(?:https?:\/\/|www\.)[^\s<>()]+/gi) || [];
-  return matches.map(url => url.startsWith("www.") ? `https://${url}` : url);
-}
-
-function getDomainFromUrl(rawUrl) {
-  try {
-    const url = new URL(rawUrl);
-    return url.hostname.replace(/^www\./i, "").toLowerCase();
-  } catch {
-    return "";
-  }
-}
-
-function compactDomain(domain) {
-  return normalizePhishingText(String(domain || "").replace(/^www\./i, "")).replace(/[^a-z0-9.\-]+/g, "");
-}
-
-function isAllowedDomain(domain, allowedDomains = []) {
-  const d = String(domain || "").replace(/^www\./i, "").toLowerCase();
-  return (allowedDomains || []).some(item => {
-    const allowed = String(item || "").replace(/^www\./i, "").toLowerCase();
-    return allowed && (d === allowed || d.endsWith(`.${allowed}`));
-  });
-}
-
-function isBlockedDomain(domain, blockedDomains = []) {
-  const d = compactDomain(domain);
-  const noDot = d.replace(/[.\-]/g, "");
-  return (blockedDomains || []).some(item => {
-    const blocked = compactDomain(item);
-    const blockedNoDot = blocked.replace(/[.\-]/g, "");
-    return blocked && (d.includes(blocked) || (blockedNoDot && noDot.includes(blockedNoDot)));
-  });
-}
-
-function isUrlShortener(domain, shorteners = []) {
-  return isAllowedDomain(domain, shorteners || []);
-}
-
-function hasSuspiciousTld(domain, suspiciousTlds = []) {
-  const parts = String(domain || "").toLowerCase().split(".").filter(Boolean);
-  const tld = parts[parts.length - 1] || "";
-  return (suspiciousTlds || []).some(item => String(item || "").replace(/^\./, "").toLowerCase() === tld);
-}
-
-function isImageAttachment(attachment) {
-  const name = String(attachment.name || "").toLowerCase();
-  const contentType = String(attachment.contentType || "").toLowerCase();
-  return contentType.startsWith("image/") || /\.(png|jpe?g|gif|webp|bmp|heic)$/i.test(name);
-}
-
-function isAntiScamExempt(message) {
-  const anti = antiScamConfig();
-  if (!anti.enabled) return true;
-  if (!message.guild || !message.member) return true;
-  if ((anti.ignoredChannelIds || []).includes(message.channel.id)) return true;
-  if (anti.skipAdmins === true && message.member.permissions?.has?.(PermissionFlagsBits.ManageGuild)) return true;
-  const exemptRoles = new Set([...(anti.exemptRoleIds || []), ...(config.staffRoleIds || [])].filter(Boolean));
-  return message.member.roles.cache.some(role => exemptRoles.has(role.id));
-}
-
-function detectScamMessage(message) {
-  const anti = antiScamConfig();
-  if (!anti.enabled) return null;
-
-  const content = String(message.content || "");
-  const clean = normalizeScanText(content);
-  const phishingClean = normalizePhishingText(content);
-  const urls = extractUrls(content);
-  const hasKeyword = listIncludesText(clean, anti.suspiciousKeywords || []);
-  const hasPhishingKeyword = listIncludesPhishingText(phishingClean, anti.phishingKeywords || []);
-  const hasImageKeywordInText = listIncludesText(clean, anti.imageKeywords || []) || listIncludesPhishingText(phishingClean, anti.imageKeywords || []);
-  const mentionCount = message.mentions.users.size + message.mentions.roles.size;
-
-  if (anti.maxMentions && mentionCount >= Number(anti.maxMentions)) {
-    return { type: "mention-spam", reason: `Mention terlalu banyak (${mentionCount})`, link: "", domain: "" };
-  }
-
-  // Deteksi pesan phishing tanpa link, misalnya ajakan scan QR / login / verifikasi akun.
-  if ((hasPhishingKeyword || hasKeyword) && /phish|pish|phising|login|verify|verifikasi|scan|qr|wallet|claim|gift|nitro|robux/i.test(phishingClean)) {
-    if (urls.length === 0 && anti.deletePhishingLinks !== false) {
-      return { type: "phishing-keyword", reason: "Teks mengandung pola phishing/scam", link: "", domain: "" };
-    }
-  }
-
-  if (anti.deleteSuspiciousLinks !== false || anti.deletePhishingLinks !== false) {
-    for (const rawUrl of urls) {
-      const domain = getDomainFromUrl(rawUrl);
-      const allowed = isAllowedDomain(domain, anti.allowedDomains || []);
-      const blocked = isBlockedDomain(domain, anti.blockedDomains || []);
-      const invite = /(discord\.gg|discord\.com\/invite)\//i.test(rawUrl);
-      const shortener = anti.blockUrlShorteners !== false && isUrlShortener(domain, anti.urlShorteners || []);
-      const badTld = hasSuspiciousTld(domain, anti.suspiciousTlds || []);
-      const linkText = `${rawUrl} ${domain}`;
-      const phishingLink = listIncludesPhishingText(linkText, anti.phishingKeywords || []) || /login|verify|security|wallet|claim|gift|nitro|robux|qr/i.test(linkText);
-      const suspiciousNitro = /nitro|gift|steam|robux|airdrop|claim|redeem|wallet/i.test(rawUrl) && !allowed;
-
-      if (anti.deleteInviteLinks && invite && !allowed) {
-        return { type: "invite-link", reason: "Invite Discord tidak diizinkan", link: rawUrl, domain };
-      }
-
-      if (blocked) {
-        return { type: "blocked-domain", reason: `Domain diblokir: ${domain}`, link: rawUrl, domain };
-      }
-
-      if (!allowed && anti.deletePhishingLinks !== false && (hasPhishingKeyword || phishingLink || (shortener && (hasKeyword || hasPhishingKeyword)) || (badTld && (hasKeyword || hasPhishingKeyword || suspiciousNitro)))) {
-        return { type: "phishing-link", reason: `Link phishing terdeteksi: ${domain}`, link: rawUrl, domain };
-      }
-
-      if (!allowed && (hasKeyword || suspiciousNitro)) {
-        return { type: "suspicious-link", reason: `Link mencurigakan: ${domain}`, link: rawUrl, domain };
-      }
-    }
-  }
-
-  if ((anti.deleteSuspiciousImages !== false || anti.deletePhishingImages !== false) && message.attachments.size > 0) {
-    const protectedOnly = Array.isArray(anti.protectedChannelIds) && anti.protectedChannelIds.length > 0;
-    const inProtectedChannel = !protectedOnly || anti.protectedChannelIds.includes(message.channel.id);
-
-    for (const attachment of message.attachments.values()) {
-      if (!isImageAttachment(attachment)) continue;
-      const name = String(attachment.name || "");
-      const attachmentText = `${name} ${attachment.description || ""} ${content}`;
-      const suspiciousFile = listIncludesText(attachmentText, anti.imageKeywords || []) || listIncludesPhishingText(attachmentText, anti.imageKeywords || []) || hasImageKeywordInText || hasKeyword || hasPhishingKeyword;
-      if (anti.imageStrictMode && inProtectedChannel) {
-        return { type: "image-strict", reason: "Gambar dihapus karena strict image mode aktif", link: attachment.url, domain: "attachment" };
-      }
-      if (anti.deletePhishingImages !== false && suspiciousFile && /phish|pish|phising|login|verify|verifikasi|qr|wallet|claim|gift|nitro|robux|scam/i.test(normalizePhishingText(attachmentText))) {
-        return { type: "phishing-image", reason: `Foto/gambar phishing terdeteksi: ${name || "attachment"}`, link: attachment.url, domain: "attachment" };
-      }
-      if (anti.deleteSuspiciousImages !== false && suspiciousFile) {
-        return { type: "suspicious-image", reason: `Foto/gambar mencurigakan: ${name || "attachment"}`, link: attachment.url, domain: "attachment" };
-      }
-    }
-  }
-
-  return null;
-}
-
-function getNotifyOwnerId(message) {
-  return config.ownerUserId || antiScamConfig().ownerUserId || message.guild?.ownerId || "";
-}
-
-function getAntiScamLogChannelId() {
-  const anti = antiScamConfig();
-  return config.antiScamLogChannelId || config.ownerLogChannelId || anti.logChannelId || anti.antiScamLogChannelId || "";
-}
-
-function applyPlaceholders(template, message, result) {
-  const now = new Date();
-  return String(template || "")
-    .replaceAll("{server}", message.guild?.name || config.serverName || "DESA TULUS")
-    .replaceAll("{owner}", getNotifyOwnerId(message) ? `<@${getNotifyOwnerId(message)}>` : "Owner")
-    .replaceAll("{ownerId}", getNotifyOwnerId(message) || "")
-    .replaceAll("{user}", `${message.author}`)
-    .replaceAll("{username}", message.author.username)
-    .replaceAll("{userId}", message.author.id)
-    .replaceAll("{displayName}", message.member?.displayName || message.author.username)
-    .replaceAll("{channel}", `${message.channel}`)
-    .replaceAll("{channelId}", message.channel.id)
-    .replaceAll("{messageId}", message.id)
-    .replaceAll("{jumpUrl}", message.url || "")
-    .replaceAll("{content}", (message.content || "").slice(0, 500))
-    .replaceAll("{reason}", result.reason || "Mencurigakan")
-    .replaceAll("{link}", result.link || "")
-    .replaceAll("{domain}", result.domain || "")
-    .replaceAll("{scamType}", result.type || "anti-scam")
-    .replaceAll("{time}", now.toLocaleTimeString("id-ID"))
-    .replaceAll("{date}", now.toLocaleDateString("id-ID"))
-    .replaceAll("{bot}", client.user?.tag || "Hansip")
-    .replaceAll("{botId}", client.user?.id || "");
-}
-
-function pushScamLog(message, result, deleted) {
-  const logs = readScamLogs();
-  logs.push({
-    time: new Date().toISOString(),
-    guildId: message.guild.id,
-    guildName: message.guild.name,
-    channelId: message.channel.id,
-    channelName: message.channel.name || message.channel.id,
-    authorId: message.author.id,
-    authorTag: message.author.tag,
-    type: result.type,
-    reason: result.reason,
-    link: result.link || "",
-    domain: result.domain || "",
-    contentPreview: String(message.content || "").slice(0, 700),
-    deleted: Boolean(deleted)
-  });
-  writeJsonFile(ANTISCAM_LOG_FILE, logs.slice(-500));
-}
-
-async function notifyAntiScamOwner(message, result, deleted) {
-  const anti = antiScamConfig();
-  const template = anti.ownerNotifyTemplate || DEFAULT_CONFIG.antiScam.ownerNotifyTemplate;
-  const content = applyPlaceholders(template, message, result);
-
-  const embed = new EmbedBuilder()
-    .setColor(deleted ? "#EF4444" : "#FACC15")
-    .setAuthor({ name: `${config.serverName || "DESA TULUS"} • Anti-Scam Guard`, iconURL: client.user.displayAvatarURL({ size: 128 }) })
-    .setTitle(deleted ? "🛡️ Pesan Scam Dihapus" : "⚠️ Pesan Mencurigakan Terdeteksi")
-    .setDescription(content)
-    .addFields(
-      { name: "👤 User", value: `${message.author} \`${message.author.tag}\``, inline: false },
-      { name: "📍 Channel", value: `${message.channel}`, inline: true },
-      { name: "📌 Tipe", value: `\`${result.type}\``, inline: true },
-      { name: "📝 Alasan", value: result.reason.slice(0, 1000), inline: false },
-      { name: "🔗 Link/Attachment", value: result.link ? result.link.slice(0, 1000) : "Tidak ada", inline: false },
-      { name: "💬 Isi Pesan", value: (message.content || "Tidak ada teks").slice(0, 1000), inline: false }
-    )
-    .setFooter({ text: `${config.serverName || "DESA TULUS"} • Anti-Scam` })
-    .setTimestamp();
-
-  const logChannelId = getAntiScamLogChannelId();
-  if (logChannelId) {
-    const logChannel = await client.channels.fetch(logChannelId).catch(() => null);
-    if (logChannel?.isTextBased?.()) await logChannel.send({ embeds: [embed] }).catch(() => null);
-  }
-
-  const ownerId = getNotifyOwnerId(message);
-  if (ownerId) {
-    const owner = await client.users.fetch(ownerId).catch(() => null);
-    if (owner) await owner.send({ embeds: [embed] }).catch(() => null);
-  }
-}
-
-async function handleAntiScam(message) {
-  if (isAntiScamExempt(message)) return false;
-  const result = detectScamMessage(message);
-  if (!result) return false;
-
-  let deleted = false;
-  try {
-    if (message.deletable) {
-      await message.delete();
-      deleted = true;
-    }
-  } catch (error) {
-    deleted = false;
-    console.error("⚠️ Anti-Scam gagal hapus pesan. Cek permission Manage Messages dan posisi role Hansip:", error.message || error);
-  }
-
-  pushScamLog(message, result, deleted);
-  await notifyAntiScamOwner(message, result, deleted).catch(() => null);
-
-  const anti = antiScamConfig();
-  if (anti.warnUser !== false) {
-    await message.channel.send({
-      content: `🛡️ ${message.author}, pesan kamu dihapus karena terdeteksi mencurigakan. Kalau ini salah deteksi, hubungi staff ya.`,
-      allowedMentions: { users: [message.author.id] }
-    }).then(msg => setTimeout(() => msg.delete().catch(() => null), 8000)).catch(() => null);
-  }
-
-  return true;
-}
-
-
-
-/* =========================
    Hansip ULTIMATE PREMIUM v1.18.0
    Game besar satu channel: auto event, auto manager, item catalog, shop, quest, achievement.
    Data aktif dibuat di file baru dan tidak menimpa data lama Hansip.
@@ -5855,7 +5285,6 @@ const OT_COMMANDS = [
   { name: "otcekfitur", category: "staff", permission: "staff", usage: "otcekfitur", description: "Cek status fitur tanpa mengubah setting." },
   { name: "otcekpanel", category: "staff", permission: "staff", usage: "otcekpanel", description: "Cek status panel dan anti-spam panel." },
   { name: "otkirimpanel", category: "staff", permission: "staffPanel", usage: "otkirimpanel mabar", description: "Kirim ulang panel tertentu jika owner mengizinkan." },
-  { name: "otlog", category: "staff", permission: "staffLog", usage: "otlog scam", description: "Melihat log aman tanpa data sensitif." },
   { name: "otstatus", category: "owner", permission: "owner", usage: "otstatus", description: "Status lengkap bot, dashboard, storage, fitur, dan backup.", aliases: ["!status"] },
   { name: "otreload", category: "owner", permission: "owner", usage: "otreload", description: "Reload config tanpa reset data." },
   { name: "otbackup", category: "owner", permission: "owner", usage: "otbackup", description: "Buat backup aman tanpa .env/token.", aliases: ["!backup"] },
@@ -5864,7 +5293,6 @@ const OT_COMMANDS = [
   { name: "otsetchannel", category: "owner", permission: "owner", usage: "otsetchannel mabar #channel", description: "Mengatur channel fitur." },
   { name: "otsetrole", category: "owner", permission: "owner", usage: "otsetrole staff @role", description: "Mengatur role fitur." },
   { name: "otfitur", category: "owner", permission: "owner", usage: "otfitur afk on", description: "Mengaktifkan atau menonaktifkan fitur." },
-  { name: "ottest", category: "owner", permission: "owner", usage: "ottest antiscam", description: "Test fitur tertentu." },
   { name: "otmaintenance", category: "owner", permission: "owner", usage: "otmaintenance on | off", description: "Mode maintenance tanpa mematikan bot total." },
   { name: "otowner", category: "owner", permission: "owner", usage: "otowner", description: "Menu owner Hansip." },
   { name: "otsendpanel", category: "owner", permission: "owner", usage: "otsendpanel game", description: "Kirim panel Hansip." },
@@ -7762,8 +7190,6 @@ function parseOtCommand(content) {
 }
 
 function featureEnabled(key) {
-  if (key === "antiScam") return config.features?.antiScam !== false && config.antiScam?.enabled !== false;
-  if (key === "antiLink") return config.features?.antiLink !== false && config.antiScam?.deleteSuspiciousLinks !== false;
   return config.features?.[key] !== false;
 }
 
@@ -7840,7 +7266,7 @@ async function cmdPing(message) {
 }
 
 async function cmdInfo(message) {
-  const embed = otBaseEmbed("ℹ️ Info Hansip", `Hansip membantu server **${message.guild?.name || config.serverName || "DESA TULUS"}** lewat fitur mabar, AFK, anti-scam, sambung kata, dan dashboard.\n\nCommand utama: **othelp**, **otping**, **otmabar**, **otafk**.`);
+  const embed = otBaseEmbed("ℹ️ Info Hansip", `Hansip membantu server **${message.guild?.name || config.serverName || "DESA TULUS"}** lewat fitur mabar, AFK, sambung kata, dan dashboard.\n\nCommand utama: **othelp**, **otping**, **otmabar**, **otafk**.`);
   embed.addFields(
     { name: "Versi", value: String(config.botVersion || "1.16.0-command-center"), inline: true },
     { name: "Uptime", value: uptimeText(), inline: true },
@@ -7958,11 +7384,10 @@ async function sendNamedPanel(message, type) {
 }
 
 async function cmdLog(message, argText) {
-  const type = String(argText || "scam").trim().toLowerCase();
+  const type = String(argText || "afk").trim().toLowerCase();
   let lines = [];
-  if (type === "scam" || type === "antiscam") {
-    lines = readScamLogs().slice(-8).reverse().map(log => `• ${log.time || "-"} — ${log.type || "scam"}: ${log.reason || "-"}`);
-  } else if (type === "afk") {
+
+  if (type === "afk") {
     const data = readAfkData();
     lines = Object.entries(data).slice(0, 10).map(([id, item]) => `• <@${id}> — ${item.reason || "AFK"}`);
   } else if (type === "mabar") {
@@ -7971,8 +7396,9 @@ async function cmdLog(message, argText) {
   } else if (type === "error") {
     lines = [commandCenterConfig().lastError || mongoLastError || "Belum ada error penting yang tercatat."];
   } else {
-    return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `otlog scam`, `otlog afk`, `otlog mabar`, `otlog error`." });
+    return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `otlog afk`, `otlog mabar`, atau `otlog error`." });
   }
+
   return replyOt(message, { embeds: [otBaseEmbed("📜 Log Aman Hansip", lines.length ? lines.join("\n") : "Belum ada log untuk kategori ini.")] });
 }
 
@@ -8006,7 +7432,6 @@ function safeBackupFileList() {
     { label: "mabar", file: DATA_FILE },
     { label: "afk", file: AFK_DATA_FILE },
     { label: "sambungKata", file: SAMBUNG_DATA_FILE },
-    { label: "antiScamLog", file: ANTISCAM_LOG_FILE },
     { label: "panelState", file: PANEL_STATE_FILE },
     { label: "gameData", file: GAME_DATA_FILE },
     { label: "gamePlayers", file: GAME_PLAYERS_FILE },
@@ -8080,7 +7505,6 @@ function restoreSafeBackupFile(fileName) {
     mabar: DATA_FILE,
     afk: AFK_DATA_FILE,
     sambungKata: SAMBUNG_DATA_FILE,
-    antiScamLog: ANTISCAM_LOG_FILE,
     panelState: PANEL_STATE_FILE,
     gameData: GAME_DATA_FILE,
     gamePlayers: GAME_PLAYERS_FILE,
@@ -8141,8 +7565,6 @@ async function cmdSetChannel(message, args) {
     game: "gameChannelId",
     gamehub: "gameChannelId",
     gamelog: "gameLogChannelId",
-    antiscam: "antiScamLogChannelId",
-    scam: "antiScamLogChannelId",
     mabar: "mabarChannelId",
     saran: "suggestionChannelId",
     panel: "panelChannelId",
@@ -8183,25 +7605,48 @@ async function cmdSetRole(message, args) {
 async function cmdFitur(message, args) {
   const keyRaw = String(args[0] || "").toLowerCase();
   const valueRaw = String(args[1] || "").toLowerCase();
-  const map = { afk: "afk", mabar: "mabar", antiscam: "antiScam", antilink: "antiLink", saran: "saran", panel: "panel", dashboard: "dashboard", truth: "truthOrDare", sambung: "sambungKata", game: "gameHub", gamehub: "gameHub" };
-  if (!map[keyRaw] || !["on", "off", "aktif", "nonaktif"].includes(valueRaw)) return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `otfitur afk on` atau `otfitur antiscam off`." });
+  const map = {
+    afk: "afk",
+    mabar: "mabar",
+    saran: "saran",
+    panel: "panel",
+    dashboard: "dashboard",
+    truth: "truthOrDare",
+    sambung: "sambungKata",
+    game: "gameHub",
+    gamehub: "gameHub"
+  };
+
+  if (!map[keyRaw] || !["on", "off", "aktif", "nonaktif"].includes(valueRaw)) {
+    return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `otfitur afk on`." });
+  }
+
   const enabled = valueRaw === "on" || valueRaw === "aktif";
   config.features = { ...(config.features || {}), [map[keyRaw]]: enabled };
-  if (map[keyRaw] === "antiScam") config.antiScam = { ...(config.antiScam || {}), enabled };
   if (map[keyRaw] === "gameHub") config.gameEnabled = enabled;
   saveConfig(config);
-  return replyOt(message, { content: `✅ Fitur **${keyRaw}** sekarang **${enabled ? "aktif" : "nonaktif"}**. 🛡️ Data lama tetap aman dan tidak direset.` });
+
+  return replyOt(message, { content: `✅ Fitur **${keyRaw}** sekarang **${enabled ? "aktif" : "nonaktif"}**. Data lama tetap aman dan tidak direset.` });
 }
 
 async function cmdTest(message, args) {
   const what = String(args[0] || "").toLowerCase();
-  if (!what) return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `ottest afk`, `ottest mabar`, `ottest antiscam`, `ottest panel`, `ottest backup`." });
+
+  if (!what) {
+    return replyOt(message, { content: "⚠️ Format kurang tepat. Contoh: `ottest afk`, `ottest mabar`, `ottest panel`, atau `ottest backup`." });
+  }
+
   if (what === "backup") return cmdBackup(message);
-  if (what === "afk") return replyOt(message, { embeds: [otBaseEmbed("🧪 Test AFK", `AFK: ${formatStatus(featureEnabled("afk"))}\nChannel: ${config.afkChannelId ? `<#${config.afkChannelId}>` : "Belum diatur"}`)] });
+  if (what === "afk") {
+    return replyOt(message, {
+      embeds: [otBaseEmbed("🧪 Test AFK", `AFK: ${formatStatus(featureEnabled("afk"))}
+Channel: ${config.afkChannelId ? `<#${config.afkChannelId}>` : "Belum diatur"}`)]
+    });
+  }
   if (what === "mabar") return cmdMabar(message);
-  if (what === "antiscam") return replyOt(message, { embeds: [otBaseEmbed("🧪 Test Anti-Scam", `Anti-Scam: ${formatStatus(antiScamConfig().enabled !== false)}\nAnti Link: ${formatStatus(antiScamConfig().deleteSuspiciousLinks !== false)}\nAnti Phishing: ${formatStatus(antiScamConfig().deletePhishingLinks !== false)}`)] });
   if (what === "panel") return cmdCekPanel(message);
-  return replyOt(message, { content: "⚠️ Test tidak dikenal. Pilihan: `afk`, `mabar`, `antiscam`, `panel`, `backup`." });
+
+  return replyOt(message, { content: "⚠️ Test tidak dikenal. Pilihan: `afk`, `mabar`, `panel`, atau `backup`." });
 }
 
 async function cmdMaintenance(message, args) {
@@ -8483,9 +7928,6 @@ client.on("messageCreate", async (message) => {
     if (config.afkRemoveOnMessage !== false && (data[message.author.id] || memberLooksAfkByNickname(message.member))) {
       await removeAfkStatus(message.member, message.channel);
     }
-
-    const blockedByAntiScam = await handleAntiScam(message);
-    if (blockedByAntiScam) return;
 
     const handledOtCommand = await processOtTextCommand(message);
     if (handledOtCommand) return;
@@ -15876,195 +15318,6 @@ try{
 
 
 /* =========================
-   HANSIP DESA TULUS BRAND + ANTI-SCAM v1.69.0
-   Branding DESA TULUS + persona Hansip.
-   Anti-scam: link scam/foto scam dihapus, invite Discord resmi tetap boleh.
-========================= */
-
-const HANSIP_DESA_TULUS_BUILD = "5.9.99-hansip-desa-tulus-premium";
-const HANSIP_REFERENCE_SCAM_HASHES = ["0e0ec00e0ec00e0e"];
-
-function applyHansipBrandingV169() {
-  try {
-    config.serverName = "DESA TULUS";
-    config.botName = "Hansip";
-    config.personaName = "Hansip Desa Tulus";
-    config.theme = "perdesaan_hansip_desa_tulus";
-    config.gameName = "Hansip";
-    config.gamePrefixName = "Hansip";
-    config.otoGameName = "Hansip";
-    config.otoFullName = "HANSIP DESA TULUS";
-    config.otoNoImageMode = true;
-    config.otoVisualMode = "emoji_only_premium_embed";
-    config.otoOneMessageOnlyAllCommands = true;
-    config.otoNoSpamAllCommands = true;
-    config.otoAnimationDelayMs = Number(config.otoAnimationDelayMs || 3000);
-    config.otoActionAnimationMs = Number(config.otoActionAnimationMs || 3000);
-    config.features = config.features || {};
-    config.features.antiScam = true;
-    config.features.antiLink = true;
-    config.antiScam = config.antiScam || {};
-    config.antiScam.enabled = true;
-    config.antiScam.deleteInviteLinks = false;
-    config.antiScam.allowDiscordInvites = true;
-    config.antiScam.deleteSuspiciousLinks = true;
-    config.antiScam.deletePhishingLinks = true;
-    config.antiScam.deleteSuspiciousImages = true;
-    config.antiScam.deletePhishingImages = true;
-    config.antiScam.deleteKnownScamScreenshot = true;
-    config.antiScam.knownScamImageHashEnabled = true;
-    config.antiScam.knownScamImageHammingThreshold = Number(config.antiScam.knownScamImageHammingThreshold || 14);
-    config.antiScam.knownScamImageHashes = Array.from(new Set([...(config.antiScam.knownScamImageHashes || []), ...HANSIP_REFERENCE_SCAM_HASHES].filter(Boolean)));
-    config.antiScam.allowedDomains = Array.from(new Set([...(config.antiScam.allowedDomains || []), "discord.com", "discord.gg", "discordapp.com"]));
-    config.antiScam.blockedDomains = Array.from(new Set([...(config.antiScam.blockedDomains || []),
-      "discord-nitro","discordnitro","nitro-free","free-nitro","claim-nitro","discord-verify",
-      "verify-discord","discord-login","login-discord","discord-security","discord-support",
-      "discrod","dicsord","dlscord","free-robux","robux-free","roblox-free","wallet-verify",
-      "verify-wallet","airdrop-free","claim-gift","free-gift","gift-claim","cashout",
-      "withdraw-free","claim-reward","qr-login","phishing","pishing","phising"
-    ]));
-    config.antiScam.suspiciousKeywords = Array.from(new Set([...(config.antiScam.suspiciousKeywords || []),
-      "cashout","withdraw","penarikan","saldo gratis","claim reward","claim hadiah","scan qr",
-      "qr login","verifikasi akun","account verify","security check","wallet connect",
-      "connect wallet","airdrop","free nitro","nitro gratis","free robux","robux gratis",
-      "discord verify","login discord"
-    ]));
-    config.antiScam.imageKeywords = Array.from(new Set([...(config.antiScam.imageKeywords || []),
-      "cashout","withdraw","saldo","reward","claim","qr","qris","wallet","verify","verification",
-      "login","security","airdrop","nitro","robux","phishing","pishing","phising","scam"
-    ]));
-    config.antiScam.ownerNotifyTemplate = config.antiScam.ownerNotifyTemplate || "🛡️ Hansip Desa Tulus menghapus pesan mencurigakan dari {user} di {channel}. Alasan: {reason}";
-  } catch (err) {
-    console.error("Hansip branding gagal:", err);
-  }
-}
-
-function hansipIsDiscordInviteV169(url = "") {
-  return /(discord\.gg|discord\.com\/invite|discordapp\.com\/invite)\//i.test(String(url || ""));
-}
-
-function hansipHammingV169(a = "", b = "") {
-  if (!a || !b || a.length !== b.length) return 999;
-  let dist = 0;
-  for (let i = 0; i < a.length; i++) {
-    const x = parseInt(a[i], 16) ^ parseInt(b[i], 16);
-    dist += x.toString(2).split("1").length - 1;
-  }
-  return dist;
-}
-
-async function hansipImageHashV169(buffer) {
-  try {
-    if (!createCanvas || !loadImage) return "";
-    const img = await loadImage(buffer);
-    const canvas = createCanvas(8, 8);
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, 8, 8);
-    const data = ctx.getImageData(0, 0, 8, 8).data;
-    const grays = [];
-    for (let i = 0; i < data.length; i += 4) grays.push(Math.round((data[i] + data[i + 1] + data[i + 2]) / 3));
-    const avg = grays.reduce((a, b) => a + b, 0) / grays.length;
-    let bits = "";
-    for (const g of grays) bits += g >= avg ? "1" : "0";
-    let hex = "";
-    for (let i = 0; i < bits.length; i += 4) hex += parseInt(bits.slice(i, i + 4), 2).toString(16);
-    return hex.padStart(16, "0");
-  } catch (_) {
-    return "";
-  }
-}
-
-async function detectHansipKnownScamImageV169(message) {
-  const anti = antiScamConfig();
-  if (!anti.enabled || anti.deleteKnownScamScreenshot === false) return null;
-  if (!message.attachments || message.attachments.size <= 0) return null;
-  for (const attachment of message.attachments.values()) {
-    if (!isImageAttachment(attachment)) continue;
-    const name = String(attachment.name || "");
-    const meta = `${name} ${attachment.description || ""} ${message.content || ""}`;
-    if (/cashout|withdraw|claim|reward|saldo|qris|qr|wallet|verify|verification|login|security|nitro|robux|airdrop|scam|phish|phising|pishing/i.test(meta)) {
-      return { type: "hansip-scam-image-keyword", reason: `Foto/gambar mencurigakan sesuai pola Hansip: ${name || "attachment"}`, link: attachment.url, domain: "attachment" };
-    }
-    if (!anti.knownScamImageHashEnabled || !Array.isArray(anti.knownScamImageHashes) || anti.knownScamImageHashes.length === 0) continue;
-    try {
-      const response = await fetch(attachment.url);
-      if (!response.ok) continue;
-      const buffer = Buffer.from(await response.arrayBuffer());
-      if (buffer.length > 8 * 1024 * 1024) continue;
-      const hash = await hansipImageHashV169(buffer);
-      if (!hash) continue;
-      const threshold = Number(anti.knownScamImageHammingThreshold || 14);
-      for (const ref of anti.knownScamImageHashes) {
-        const dist = hansipHammingV169(hash, ref);
-        if (dist <= threshold) {
-          return { type: "hansip-known-scam-image", reason: `Foto scam mirip gambar referensi Hansip terdeteksi (jarak ${dist}/${threshold})`, link: attachment.url, domain: "attachment" };
-        }
-      }
-    } catch (err) {
-      console.error("Hansip image scan gagal:", err.message || err);
-    }
-  }
-  return null;
-}
-
-function installHansipAntiScamV169() {
-  try {
-    applyHansipBrandingV169();
-
-    if (typeof detectScamMessage === "function" && !detectScamMessage.__hansipV169) {
-      const oldDetectScamMessageV169 = detectScamMessage;
-      detectScamMessage = function(message) {
-        const content = String(message.content || "");
-        const urls = typeof extractUrls === "function" ? extractUrls(content) : [];
-        const onlyDiscordInvites = urls.length > 0 && urls.every(u => hansipIsDiscordInviteV169(u));
-        if (onlyDiscordInvites) return null;
-        return oldDetectScamMessageV169(message);
-      };
-      detectScamMessage.__hansipV169 = true;
-    }
-
-    if (typeof handleAntiScam === "function" && !handleAntiScam.__hansipV169) {
-      const oldHandleAntiScamV169 = handleAntiScam;
-      handleAntiScam = async function(message) {
-        if (isAntiScamExempt(message)) return false;
-        let result = detectScamMessage(message);
-        if (!result) result = await detectHansipKnownScamImageV169(message).catch(() => null);
-        if (!result) return false;
-        let deleted = false;
-        try {
-          if (message.deletable) {
-            await message.delete();
-            deleted = true;
-          }
-        } catch (error) {
-          deleted = false;
-          console.error("⚠️ Hansip gagal hapus pesan scam. Cek permission Manage Messages dan posisi role:", error.message || error);
-        }
-        pushScamLog(message, result, deleted);
-        await notifyAntiScamOwner(message, result, deleted).catch(() => null);
-        const anti = antiScamConfig();
-        if (anti.warnUser !== false) {
-          await message.channel.send({
-            content: `🛡️ ${message.author}, Hansip Desa Tulus menghapus pesan mencurigakan. Kalau ini salah deteksi, hubungi staff ya.`,
-            allowedMentions: { users: [message.author.id] }
-          }).then(msg => setTimeout(() => msg.delete().catch(() => null), 8000)).catch(() => null);
-        }
-        return true;
-      };
-      handleAntiScam.__hansipV169 = true;
-    }
-
-    console.log("🛡️ Hansip Desa Tulus aktif: branding DESA TULUS + anti-scam foto/link scam + invite Discord tetap aman.");
-  } catch (err) {
-    console.error("Hansip anti-scam install gagal:", err);
-  }
-}
-installHansipAntiScamV169();
-
-
-
-
-/* =========================
    HANSIP DESA TULUS NO GAME v1.70.0
    Fokus:
    - Prefix utama diganti menjadi: h
@@ -17393,3 +16646,9 @@ try {
 console.log("✅ Hansip v6.2.1 final: footer dobel hilang, footer tinggal satu di bawah.");
 /* END HANSIP V6.2.1 FINAL FOOTER SINGLE CLEAN */
 
+/* =========================
+   PAK HANSIP V6.5.0
+   Modul anti-scam lama sudah dihapus.
+   Bot tidak lagi memeriksa atau menghapus pesan/gambar melalui modul tersebut.
+   Fitur lain dan data lama tetap dipertahankan.
+========================= */

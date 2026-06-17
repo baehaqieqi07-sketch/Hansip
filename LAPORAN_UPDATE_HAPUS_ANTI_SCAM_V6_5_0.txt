@@ -1,0 +1,19 @@
+LAPORAN UPDATE PAK HANSIP V6.5.0
+
+DIHAPUS
+- Mesin anti-scam
+- Pemanggilan anti-scam pada messageCreate
+- Konfigurasi anti-scam
+- Log anti-scam
+- Tab dashboard anti-scam
+- Test dan command khusus anti-scam
+- File dokumentasi khusus anti-scam
+
+TETAP AMAN
+- Prefix h
+- Command lain
+- AFK, mabar, sambung kata
+- Custom Status
+- Dashboard lain
+- Database
+- Data server dan member

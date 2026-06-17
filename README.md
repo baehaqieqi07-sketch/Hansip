@@ -38,3 +38,19 @@ Saat bot online, Custom Status tampil berurutan setiap 15 detik:
 Semua status memakai `ActivityType.Custom`, tulisan dikirim melalui properti `state`, dan status utama bot tetap `online`.
 
 Status pertama langsung tampil saat event `clientReady` berjalan. Hanya ada satu interval rotasi Custom Status.
+
+## Update v6.5.0
+
+Modul anti-scam sudah dihapus sepenuhnya dari alur pesan bot.
+
+Tetap dipertahankan:
+- Prefix `h`
+- Command lain
+- AFK
+- Mabar
+- Sambung Kata
+- Custom Status otomatis
+- Warna embed `#7DBD77`
+- Dashboard lain
+- Database dan data member
+
