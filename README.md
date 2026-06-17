@@ -26,13 +26,15 @@ NODE_ENV=production
 DASHBOARD_ENABLED=false
 ```
 
-## Activity otomatis Pak Hansip
+## Custom Status otomatis Pak Hansip
 
-Saat bot online, activity tampil berurutan setiap 15 detik:
+Saat bot online, Custom Status tampil berurutan setiap 15 detik:
 
-1. `👀 Memantau Gerak-Gerik Warga` — Watching
-2. `🛡️ Siaga Menjaga Lingkungan` — Playing
-3. `🔦 Ronda Dulu, Ngopi Nanti` — Listening
-4. `📢 Tertib Sebelum Ditegur` — Watching
+1. `👀 Memantau Gerak-Gerik Warga`
+2. `🛡️ Siaga Menjaga Lingkungan`
+3. `🔦 Ronda Dulu, Ngopi Nanti`
+4. `📢 Tertib Sebelum Ditegur`
 
-Activity pertama langsung tampil ketika event `clientReady` berjalan. Rotasi memakai satu interval yang aman dan status bot tetap `online`.
+Semua status memakai `ActivityType.Custom`, tulisan dikirim melalui properti `state`, dan status utama bot tetap `online`.
+
+Status pertama langsung tampil saat event `clientReady` berjalan. Hanya ada satu interval rotasi Custom Status.

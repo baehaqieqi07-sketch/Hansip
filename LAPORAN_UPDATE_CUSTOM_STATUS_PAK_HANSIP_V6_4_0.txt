@@ -1,0 +1,58 @@
+LAPORAN UPDATE CUSTOM STATUS PAK HANSIP V6.4.0
+
+FILE YANG DIUBAH
+- index.js
+- package.json
+- package-lock.json (sinkronisasi versi)
+- README.md
+- File laporan ini ditambahkan
+
+SISTEM LAMA YANG DIGANTI
+- PAK_HANSIP_ACTIVITIES dihapus.
+- startPakHansipActivityRotation(client) dihapus.
+- ActivityType.Playing dihapus dari sistem presence.
+- ActivityType.Watching dihapus dari sistem presence.
+- ActivityType.Listening dihapus dari sistem presence.
+- Pemanggilan ready lama diganti ke startPakHansipCustomStatusRotation(client).
+
+LOKASI KODE BARU
+- PAK_HANSIP_CUSTOM_STATUSES berada setelah import discord.js,
+  sebelum konstanta CONFIG_FILE.
+- startPakHansipCustomStatusRotation(client) berada pada blok yang sama.
+- Fungsi dijalankan dari event client.once("clientReady") yang sudah ada.
+- Event ready baru tidak dibuat.
+
+CUSTOM STATUS
+1. 👀 Memantau Gerak-Gerik Warga
+2. 🛡️ Siaga Menjaga Lingkungan
+3. 🔦 Ronda Dulu, Ngopi Nanti
+4. 📢 Tertib Sebelum Ditegur
+
+FORMAT PRESENCE
+- type: ActivityType.Custom
+- name: "Custom Status"
+- state: tulisan status
+- status: "online"
+
+INTERVAL
+- 15_000 milidetik / 15 detik.
+- Status pertama langsung tampil saat bot ready.
+- Interval lama dibersihkan sebelum interval baru dibuat.
+- Hanya satu interval presence digunakan.
+
+CARA MENGGANTI TULISAN
+- Edit daftar PAK_HANSIP_CUSTOM_STATUSES di index.js.
+
+CARA MENGGANTI INTERVAL
+- Ubah angka 15_000.
+- Contoh 30 detik: 30_000.
+
+KEAMANAN
+- Token tidak diubah.
+- Prefix tidak diubah.
+- Command tidak diubah.
+- Dashboard tidak diubah.
+- Database tidak diubah.
+- Role dan channel tidak diubah.
+- Data server/member tidak diubah atau direset.
+- Fitur lama tetap dipertahankan.

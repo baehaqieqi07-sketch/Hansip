@@ -38,52 +38,47 @@ const {
 } = require("discord.js");
 
 
+
+
+
 /* =========================
-   PAK HANSIP ACTIVITY ROTATION V6.3.0
+   PAK HANSIP CUSTOM STATUS ROTATION V6.4.0
 ========================= */
-const PAK_HANSIP_ACTIVITIES = [
-  {
-    name: "👀 Memantau Gerak-Gerik Warga",
-    type: ActivityType.Watching
-  },
-  {
-    name: "🛡️ Siaga Menjaga Lingkungan",
-    type: ActivityType.Playing
-  },
-  {
-    name: "🔦 Ronda Dulu, Ngopi Nanti",
-    type: ActivityType.Listening
-  },
-  {
-    name: "📢 Tertib Sebelum Ditegur",
-    type: ActivityType.Watching
-  }
+const PAK_HANSIP_CUSTOM_STATUSES = [
+  "👀 Memantau Gerak-Gerik Warga",
+  "🛡️ Siaga Menjaga Lingkungan",
+  "🔦 Ronda Dulu, Ngopi Nanti",
+  "📢 Tertib Sebelum Ditegur"
 ];
 
-let pakHansipActivityInterval = null;
-let pakHansipActivityIndex = 0;
+let pakHansipCustomStatusInterval = null;
+let pakHansipCustomStatusIndex = 0;
 
-function startPakHansipActivityRotation(client) {
-  if (!client?.user || PAK_HANSIP_ACTIVITIES.length === 0) {
+function startPakHansipCustomStatusRotation(client) {
+  if (
+    !client?.user ||
+    PAK_HANSIP_CUSTOM_STATUSES.length === 0
+  ) {
     return;
   }
 
-  if (pakHansipActivityInterval) {
-    clearInterval(pakHansipActivityInterval);
-    pakHansipActivityInterval = null;
+  if (pakHansipCustomStatusInterval) {
+    clearInterval(pakHansipCustomStatusInterval);
+    pakHansipCustomStatusInterval = null;
   }
 
-  // Setiap bot benar-benar online, mulai lagi dari activity pertama.
-  pakHansipActivityIndex = 0;
+  // Setiap bot benar-benar online, mulai dari status pertama.
+  pakHansipCustomStatusIndex = 0;
 
-  const updatePakHansipActivity = () => {
+  const updatePakHansipCustomStatus = () => {
     if (!client?.user) {
       return;
     }
 
-    const activity =
-      PAK_HANSIP_ACTIVITIES[
-        pakHansipActivityIndex % PAK_HANSIP_ACTIVITIES.length
+    const currentStatus =
+      PAK_HANSIP_CUSTOM_STATUSES[
+        pakHansipCustomStatusIndex %
+          PAK_HANSIP_CUSTOM_STATUSES.length
       ];
 
     try {
@@ -91,36 +86,40 @@ function startPakHansipActivityRotation(client) {
         status: "online",
         activities: [
           {
-            name: activity.name,
-            type: activity.type
+            type: ActivityType.Custom,
+            name: "Custom Status",
+            state: currentStatus
           }
         ]
       });
 
-      pakHansipActivityIndex =
-        (pakHansipActivityIndex + 1) %
-        PAK_HANSIP_ACTIVITIES.length;
+      pakHansipCustomStatusIndex =
+        (pakHansipCustomStatusIndex + 1) %
+        PAK_HANSIP_CUSTOM_STATUSES.length;
     } catch (error) {
       console.error(
-        "[PAK HANSIP ACTIVITY] Gagal mengganti activity:",
+        "[PAK HANSIP CUSTOM STATUS] Gagal mengganti status:",
         error
       );
     }
   };
 
-  // Activity pertama langsung tampil, tidak menunggu 15 detik.
-  updatePakHansipActivity();
+  // Status pertama langsung tampil saat bot online.
+  updatePakHansipCustomStatus();
 
-  pakHansipActivityInterval = setInterval(
-    updatePakHansipActivity,
+  pakHansipCustomStatusInterval = setInterval(
+    updatePakHansipCustomStatus,
     15_000
   );
 
-  if (typeof pakHansipActivityInterval.unref === "function") {
-    pakHansipActivityInterval.unref();
+  if (
+    typeof pakHansipCustomStatusInterval.unref ===
+    "function"
+  ) {
+    pakHansipCustomStatusInterval.unref();
   }
 }
-/* END PAK HANSIP ACTIVITY ROTATION V6.3.0 */
+/* END PAK HANSIP CUSTOM STATUS ROTATION V6.4.0 */
 
 
 const CONFIG_FILE = path.join(__dirname, "config.json");
@@ -8437,7 +8436,7 @@ function dashboardPermissionCenterHtml() {
    EVENTS
 ========================= */
 client.once("clientReady", async () => {
-  startPakHansipActivityRotation(client);
+  startPakHansipCustomStatusRotation(client);
   console.log(`✅ ${client.user.tag} online sebagai Hansip`);
   startDashboardCacheRefresh().catch(() => null);
   setInterval(() => startDashboardCacheRefresh().catch(() => null), DASHBOARD_DISCORD_CACHE_TTL);

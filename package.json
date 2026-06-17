@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "6.3.0",
-  "description": "Pak Hansip Desa Tulus dengan activity Discord otomatis berganti setiap 15 detik.",
+  "version": "6.4.0",
+  "description": "Pak Hansip Desa Tulus dengan Custom Status Discord otomatis setiap 15 detik.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
