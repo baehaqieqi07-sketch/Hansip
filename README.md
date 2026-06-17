@@ -1,13 +1,40 @@
-# Hansip — DESA TULUS
+# Pak Hansip — DESA TULUS
 
-Update v6.2.1 final:
-- Footer dobel sudah dibersihkan.
-- Footer salah sudah dibuang dari output embed.
-- Footer final hanya satu di bawah embed.
-- Warna semua embed tetap `#7DBD77`.
-- Command yang dihapus tetap: `hbj`, `hcf`, `hnpc`, `hteam`, `hdaily`, `hshop`.
+Update besar sistem Cari Mabar DESA TULUS.
 
-## Test lokal
+## Tampilan post mabar
+
+Post mabar sekarang dibuat ringkas:
+- mention host dan role game
+- Game
+- Mode
+- Slot
+- Waktu
+- Voice
+- tombol `Join Voice`
+- tombol `DM Host`
+- tombol `Cari Mabar`
+- thread diskusi otomatis
+
+## Katalog game
+
+- 25 pilihan Mobile
+- 25 pilihan PC
+- role game dapat diatur melalui `gameRoleIds`
+- dashboard Cari Mabar menampilkan seluruh katalog
+
+## Fitur yang tetap aman
+
+- Prefix `h`
+- AFK
+- Mabar dan data mabar lama
+- Sambung Kata
+- Custom Status otomatis
+- Warna embed `#7DBD77`
+- Dashboard
+- Database dan data member
+
+## Test
 
 ```bat
 cd /d "D:\Hansip"
@@ -25,32 +52,3 @@ GUILD_ID=ISI_ID_SERVER_DESA_TULUS
 NODE_ENV=production
 DASHBOARD_ENABLED=false
 ```
-
-## Custom Status otomatis Pak Hansip
-
-Saat bot online, Custom Status tampil berurutan setiap 15 detik:
-
-1. `👀 Memantau Gerak-Gerik Warga`
-2. `🛡️ Siaga Menjaga Lingkungan`
-3. `🔦 Ronda Dulu, Ngopi Nanti`
-4. `📢 Tertib Sebelum Ditegur`
-
-Semua status memakai `ActivityType.Custom`, tulisan dikirim melalui properti `state`, dan status utama bot tetap `online`.
-
-Status pertama langsung tampil saat event `clientReady` berjalan. Hanya ada satu interval rotasi Custom Status.
-
-## Update v6.5.0
-
-Modul anti-scam sudah dihapus sepenuhnya dari alur pesan bot.
-
-Tetap dipertahankan:
-- Prefix `h`
-- Command lain
-- AFK
-- Mabar
-- Sambung Kata
-- Custom Status otomatis
-- Warna embed `#7DBD77`
-- Dashboard lain
-- Database dan data member
-

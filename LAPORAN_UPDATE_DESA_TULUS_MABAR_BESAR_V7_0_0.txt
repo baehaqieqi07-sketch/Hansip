@@ -1,0 +1,24 @@
+LAPORAN UPDATE PAK HANSIP V7.0.0
+
+BRANDING
+- Seluruh branding lama dibersihkan dari file project.
+- Branding publik memakai DESA TULUS.
+- Warna embed Cari Mabar memakai #7DBD77.
+
+EMBED CARI MABAR
+- Bentuk compact seperti kartu referensi.
+- Menampilkan Game, Mode, Slot, Waktu, dan Voice.
+- Pesan utama mention host dan role game.
+- Tombol: Join Voice, DM Host, Cari Mabar.
+- Thread diskusi otomatis dipertahankan.
+
+KATALOG
+- Mobile: 25 pilihan.
+- PC: 25 pilihan.
+- Select menu tetap sesuai batas maksimal Discord, yaitu 25 opsi per platform.
+- Dashboard dapat mengatur role untuk semua game.
+
+DATA DAN FITUR
+- Data mabar tidak direset.
+- Data server/member tidak direset.
+- Prefix, AFK, Sambung Kata, Custom Status, dashboard, dan database tetap dipertahankan.

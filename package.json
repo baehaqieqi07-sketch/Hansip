@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "6.5.0",
-  "description": "Pak Hansip Desa Tulus tanpa anti-scam; fitur lain tetap dipertahankan.",
+  "version": "7.0.0",
+  "description": "Pak Hansip DESA TULUS dengan sistem Cari Mabar besar, compact, dan katalog 50 pilihan game Mobile/PC.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

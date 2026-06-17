@@ -212,9 +212,49 @@ const DEFAULT_CONFIG = {
     "Mobile Legends": "",
     "PUBG Mobile": "",
     "Free Fire": "",
+    "Honor of Kings": "",
+    "Call of Duty Mobile": "",
+    "Arena of Valor": "",
+    "Wild Rift": "",
+    "eFootball Mobile": "",
+    "FC Mobile": "",
     "Roblox": "",
+    "Minecraft Bedrock": "",
+    "Genshin Impact": "",
+    "Honkai: Star Rail": "",
+    "Wuthering Waves": "",
+    "Stumble Guys": "",
+    "Among Us": "",
+    "Brawl Stars": "",
+    "Clash Royale": "",
+    "Clash of Clans": "",
+    "Pokémon Unite": "",
+    "Identity V": "",
+    "Sausage Man": "",
+    "Blood Strike": "",
+    "Delta Force Mobile": "",
     "Valorant": "",
-    "Minecraft": ""
+    "Counter-Strike 2": "",
+    "Dota 2": "",
+    "League of Legends": "",
+    "Minecraft Java": "",
+    "GTA V": "",
+    "FiveM": "",
+    "Fortnite": "",
+    "Apex Legends": "",
+    "Overwatch 2": "",
+    "Rainbow Six Siege": "",
+    "PUBG: Battlegrounds": "",
+    "Call of Duty: Warzone": "",
+    "Marvel Rivals": "",
+    "Dead by Daylight": "",
+    "Phasmophobia": "",
+    "Lethal Company": "",
+    "The Forest": "",
+    "Sons of the Forest": "",
+    "Rust": "",
+    "ARK: Survival Ascended": "",
+    "eFootball": ""
   },
   features: {
     afk: true,
@@ -2213,13 +2253,12 @@ function dashboardContent(tab, notice = "") {
 
   if (tab === "mabar") return noticeBox + dashboardSaveForm("mabar", [
     dashboardInput("mabarChannelId", "Channel Cari Mabar"),
-    dashboardInput("gameRoleIds.Mobile Legends", "Role Mobile Legends"),
-    dashboardInput("gameRoleIds.PUBG Mobile", "Role PUBG Mobile"),
-    dashboardInput("gameRoleIds.Free Fire", "Role Free Fire"),
-    dashboardInput("gameRoleIds.Roblox", "Role Roblox"),
-    dashboardInput("gameRoleIds.Valorant", "Role Valorant"),
-    dashboardInput("gameRoleIds.Minecraft", "Role Minecraft")
-  ].join(""), "⚔️ Cari Mabar Settings") + `<div class="panel"><h3>Channel Discord</h3>${dashboardChannelTable(discord)}</div>`;
+    ...MABAR_ALL_GAMES.map(game =>
+      dashboardInput(`gameRoleIds.${game}`, `Role ${game}`)
+    )
+  ].join(""), "🌾 Cari Mabar DESA TULUS") +
+  `<div class="panel"><h3>Daftar Game</h3><p class="note">Mobile: ${GAME_OPTIONS.Mobile.length} pilihan • PC: ${GAME_OPTIONS.PC.length} pilihan. Isi role hanya untuk game yang memiliki role khusus.</p></div>` +
+  `<div class="panel"><h3>Channel Discord</h3>${dashboardChannelTable(discord)}</div>`;
 
   if (tab === "truth") return noticeBox + dashboardSaveForm("truth", [
     dashboardInput("truthOrDareChannelId", "Channel Truth or Dare")
@@ -2588,8 +2627,8 @@ const mabarSessions = new Map();
 const SESSION_TTL = 10 * 60 * 1000;
 
 const PLATFORM_OPTIONS = [
-  { label: "Mobile", value: "Mobile", emoji: "📱", description: "ML, PUBG, FF, Roblox, dan game HP." },
-  { label: "PC", value: "PC", emoji: "💻", description: "Valorant, Minecraft, Roblox, dan game PC." }
+  { label: "Mobile", value: "Mobile", emoji: "📱", description: "Pilihan game mobile populer untuk warga desa." },
+  { label: "PC", value: "PC", emoji: "💻", description: "Pilihan game PC populer untuk warga desa." }
 ];
 
 const GAME_OPTIONS = {
@@ -2597,23 +2636,64 @@ const GAME_OPTIONS = {
     { label: "Mobile Legends", value: "Mobile Legends", emoji: "⚔️" },
     { label: "PUBG Mobile", value: "PUBG Mobile", emoji: "🔫" },
     { label: "Free Fire", value: "Free Fire", emoji: "🔥" },
+    { label: "Honor of Kings", value: "Honor of Kings", emoji: "👑" },
+    { label: "Call of Duty Mobile", value: "Call of Duty Mobile", emoji: "🎯" },
+    { label: "Arena of Valor", value: "Arena of Valor", emoji: "🛡️" },
+    { label: "Wild Rift", value: "Wild Rift", emoji: "🐉" },
+    { label: "eFootball Mobile", value: "eFootball Mobile", emoji: "⚽" },
+    { label: "FC Mobile", value: "FC Mobile", emoji: "🥅" },
     { label: "Roblox", value: "Roblox", emoji: "🧱" },
-    { label: "eFootball", value: "eFootball", emoji: "⚽" },
+    { label: "Minecraft Bedrock", value: "Minecraft Bedrock", emoji: "⛏️" },
     { label: "Genshin Impact", value: "Genshin Impact", emoji: "✨" },
+    { label: "Honkai: Star Rail", value: "Honkai: Star Rail", emoji: "🚂" },
+    { label: "Wuthering Waves", value: "Wuthering Waves", emoji: "🌊" },
     { label: "Stumble Guys", value: "Stumble Guys", emoji: "🏃" },
+    { label: "Among Us", value: "Among Us", emoji: "🚀" },
+    { label: "Brawl Stars", value: "Brawl Stars", emoji: "⭐" },
+    { label: "Clash Royale", value: "Clash Royale", emoji: "🏰" },
+    { label: "Clash of Clans", value: "Clash of Clans", emoji: "🛖" },
+    { label: "Pokémon Unite", value: "Pokémon Unite", emoji: "⚡" },
+    { label: "Identity V", value: "Identity V", emoji: "🎭" },
+    { label: "Sausage Man", value: "Sausage Man", emoji: "🌭" },
+    { label: "Blood Strike", value: "Blood Strike", emoji: "🩸" },
+    { label: "Delta Force Mobile", value: "Delta Force Mobile", emoji: "🪖" },
     { label: "Lainnya", value: "Lainnya", emoji: "🎮" }
   ],
   PC: [
     { label: "Valorant", value: "Valorant", emoji: "🎯" },
-    { label: "Minecraft", value: "Minecraft", emoji: "⛏️" },
-    { label: "Roblox", value: "Roblox", emoji: "🧱" },
-    { label: "Genshin Impact", value: "Genshin Impact", emoji: "✨" },
-    { label: "GTA V", value: "GTA V", emoji: "🚗" },
     { label: "Counter-Strike 2", value: "Counter-Strike 2", emoji: "💣" },
     { label: "Dota 2", value: "Dota 2", emoji: "🛡️" },
+    { label: "League of Legends", value: "League of Legends", emoji: "🐉" },
+    { label: "Minecraft Java", value: "Minecraft Java", emoji: "⛏️" },
+    { label: "Roblox", value: "Roblox", emoji: "🧱" },
+    { label: "GTA V", value: "GTA V", emoji: "🚗" },
+    { label: "FiveM", value: "FiveM", emoji: "🚓" },
+    { label: "Fortnite", value: "Fortnite", emoji: "🏝️" },
+    { label: "Apex Legends", value: "Apex Legends", emoji: "🔺" },
+    { label: "Overwatch 2", value: "Overwatch 2", emoji: "🦸" },
+    { label: "Rainbow Six Siege", value: "Rainbow Six Siege", emoji: "🚪" },
+    { label: "PUBG: Battlegrounds", value: "PUBG: Battlegrounds", emoji: "🪂" },
+    { label: "Call of Duty: Warzone", value: "Call of Duty: Warzone", emoji: "🪖" },
+    { label: "Marvel Rivals", value: "Marvel Rivals", emoji: "🦸" },
+    { label: "Dead by Daylight", value: "Dead by Daylight", emoji: "🔦" },
+    { label: "Phasmophobia", value: "Phasmophobia", emoji: "👻" },
+    { label: "Lethal Company", value: "Lethal Company", emoji: "📦" },
+    { label: "The Forest", value: "The Forest", emoji: "🌲" },
+    { label: "Sons of the Forest", value: "Sons of the Forest", emoji: "🏕️" },
+    { label: "Rust", value: "Rust", emoji: "⚙️" },
+    { label: "ARK: Survival Ascended", value: "ARK: Survival Ascended", emoji: "🦖" },
+    { label: "Genshin Impact", value: "Genshin Impact", emoji: "✨" },
+    { label: "eFootball", value: "eFootball", emoji: "⚽" },
     { label: "Lainnya", value: "Lainnya", emoji: "🎮" }
   ]
 };
+
+const MABAR_ALL_GAMES = [
+  ...new Set([
+    ...GAME_OPTIONS.Mobile.map(item => item.value),
+    ...GAME_OPTIONS.PC.map(item => item.value)
+  ])
+].filter(game => game !== "Lainnya");
 
 const MODE_OPTIONS = [
   { label: "Rank", value: "Rank", emoji: "🏆" },
@@ -2623,6 +2703,9 @@ const MODE_OPTIONS = [
   { label: "Turnamen", value: "Turnamen", emoji: "🏅" },
   { label: "Roleplay", value: "Roleplay", emoji: "🎭" },
   { label: "Survival", value: "Survival", emoji: "🏕️" },
+  { label: "Duo", value: "Duo", emoji: "👥" },
+  { label: "Squad", value: "Squad", emoji: "🛡️" },
+  { label: "Party", value: "Party", emoji: "🎉" },
   { label: "Lainnya", value: "Lainnya", emoji: "🧩" }
 ];
 
@@ -2638,11 +2721,12 @@ const WAKTU_OPTIONS = [
   { label: "10 Menit Lagi", value: "10 Menit Lagi", emoji: "🕒" },
   { label: "15 Menit Lagi", value: "15 Menit Lagi", emoji: "🕒" },
   { label: "30 Menit Lagi", value: "30 Menit Lagi", emoji: "🕒" },
-  { label: "1 Jam Lagi", value: "1 Jam Lagi", emoji: "⏰" }
+  { label: "1 Jam Lagi", value: "1 Jam Lagi", emoji: "⏰" },
+  { label: "Jam Tertentu", value: "Jam Tertentu", emoji: "🗓️" }
 ];
 
 const VOICE_OPTIONS = [
-  { label: "Ya, pakai voice", value: "Ya", emoji: "🎙️", description: "Host lagi/akan pakai voice channel." },
+  { label: "Ya, pakai voice", value: "Ya", emoji: "🔊", description: "Host sedang atau akan masuk voice." },
   { label: "Tidak pakai voice", value: "Tidak", emoji: "🔇", description: "Mabar tanpa voice." }
 ];
 
@@ -2807,7 +2891,7 @@ const DARE_CHALLENGES = [
   "Kirim GIF lucu yang aman dan sopan.",
   "Bikin tebak-tebakan singkat di chat ini.",
   "Tulis 3 kata yang menggambarkan server DESA TULUS.",
-  "Ganti nickname 10 menit jadi `Warga Tulus Mode Santai` kalau kamu mau.",
+  "Ganti nickname 10 menit jadi `warga DESA TULUS Mode Santai` kalau kamu mau.",
   "Ceritakan satu tips mabar biar tim tidak gampang panik.",
   "Kirim satu stiker atau emoji hati untuk menyemangati warga server.",
   "Buat caption lucu untuk avatar Discord kamu.",
@@ -2835,7 +2919,7 @@ const DARE_CHALLENGES = [
   "Buat nama tim mabar dengan tema malam hari.",
   "Kirim satu kalimat motivasi untuk warga yang lagi belajar.",
   "Kirim satu kalimat motivasi untuk warga yang lagi push rank.",
-  "Ketik: `Aku warga tulus, bukan warga panik.`",
+  "Ketik: `Aku warga DESA TULUS, bukan warga panik.`",
   "Buat singkatan lucu dari OT.",
   "Buat singkatan keren dari OT.",
   "Tulis satu hal baik yang bisa dilakukan di server hari ini.",
@@ -2877,7 +2961,7 @@ const DARE_CHALLENGES = [
   "Buat nama kota kalau DESA TULUS jadi kota.",
   "Tulis satu kalimat dengan gaya sangat formal.",
   "Tulis satu kalimat dengan gaya sangat santai tapi sopan.",
-  "Kirim pesan: `Aku hadir sebagai warga tulus.`",
+  "Kirim pesan: `Aku hadir sebagai warga DESA TULUS.`",
   "Buat mini review 1 kalimat tentang server ini.",
   "Tulis satu ide channel baru yang aman dan seru.",
   "Tulis satu ide event yang bisa dimainkan tanpa hadiah mahal.",
@@ -2913,7 +2997,7 @@ const DARE_CHALLENGES = [
   "Tulis satu kata bahasa Inggris yang sering kamu pakai di game.",
   "Buat combo emoji untuk `mabar malam`.",
   "Buat combo emoji untuk `hari santai`.",
-  "Buat combo emoji untuk `warga tulus`.",
+  "Buat combo emoji untuk `warga DESA TULUS`.",
   "Tulis satu kalimat yang hanya terdiri dari 4 kata.",
   "Tulis satu kalimat yang hanya terdiri dari 6 kata.",
   "Buat mini cerita 2 kalimat tentang bot OT.",
@@ -2938,7 +3022,7 @@ const DARE_CHALLENGES = [
   "Ketik: `Aku siap main, tapi tetap santun.`",
   "Ketik: `Tulus bukan cuma nama, tapi cara kita ngobrol.`",
   "Ketik: `Yang penting seru, yang penting sopan.`",
-  "Ketik: `Warga tulus hadir membawa vibes baik.`",
+  "Ketik: `warga DESA TULUS hadir membawa vibes baik.`",
   "Buat satu kalimat dengan awalan `Hari ini aku...`",
   "Buat satu kalimat dengan awalan `Kalau aku jadi admin...`",
   "Buat satu kalimat dengan awalan `Mabar terbaik adalah...`",
@@ -3143,7 +3227,7 @@ function memberLooksAfkByNickname(member) {
 
 function makeSafeNickname(name) {
   const prefix = String(config.afkNicknamePrefix || "[AFK]").trim() || "[AFK]";
-  const cleanName = stripAfkPrefixFromName(name || "Warga Tulus") || "Warga Tulus";
+  const cleanName = stripAfkPrefixFromName(name || "warga DESA TULUS") || "warga DESA TULUS";
   return `${prefix} ${cleanName}`.slice(0, 32);
 }
 
@@ -3782,67 +3866,42 @@ async function getMabarChannel(interaction) {
 
 function buildMabarEmbed({ host, game, mode, slot, waktu, voice }) {
   const gameMention = getGameMention(game);
-  const serverName = config.serverName || "DESA TULUS";
-  const voiceText = voice ? "Aktif • siap ngobrol di voice" : "Tidak wajib • boleh tanpa voice";
+  const voiceText = voice ? "Ya" : "Tidak";
 
   return new EmbedBuilder()
-    .setColor(config.embedColor || "#63B3FF")
-    .setAuthor({
-      name: `${serverName} • Cari Mabar`,
-      iconURL: host.displayAvatarURL({ size: 128 })
-    })
-    .setTitle("⚔️ MABAR DIBUKA!")
-    .setDescription(
-      `> ${host} lagi buka room mabar ${gameMention}\n` +
-      "> Yang mau ikut tinggal klik tombol di bawah. Jangan malu, langsung gas!"
-    )
+    .setColor("#7DBD77")
+    .setDescription(`${host} **sedang mencari mabar** ${gameMention} ⚔️`)
     .addFields(
       {
-        name: "👑 HOST",
-        value: `${host}\n\`${host.username}\``,
+        name: "🎮 Game",
+        value: String(game),
         inline: true
       },
       {
-        name: "🎮 GAME",
-        value: `${gameMention}\n\`${game}\``,
+        name: "🍀 Mode",
+        value: String(mode),
         inline: true
       },
       {
-        name: "📌 STATUS",
-        value: "🟢 `OPEN`",
+        name: "👥 Slot",
+        value: String(slot),
         inline: true
       },
       {
-        name: "🧩 MODE",
-        value: `\`${mode}\``,
+        name: "🕘 Waktu",
+        value: String(waktu),
         inline: true
       },
       {
-        name: "👥 BUTUH",
-        value: `\`${slot} orang\``,
+        name: "🗣️ Voice",
+        value: voiceText,
         inline: true
-      },
-      {
-        name: "⏰ MULAI",
-        value: `\`${waktu}\``,
-        inline: true
-      },
-      {
-        name: "🎙️ VOICE",
-        value: voice ? `🔊 \`${voiceText}\`` : `🔇 \`${voiceText}\``,
-        inline: false
-      },
-      {
-        name: "💬 CARA IKUT",
-        value:
-          "Klik **🔊 Masuk Voice** kalau mau masuk voice host.\n" +
-          "Klik **📩 Chat Host** kalau mau tanya dulu.\n" +
-          "Klik **🔎 Buat Mabar** kalau kamu juga mau bikin post mabar.",
-        inline: false
       }
     )
-    .setThumbnail(host.displayAvatarURL({ size: 256 }))
-    .setFooter({ text: `${serverName} • Mabar bareng warga tulus` })
+    .setFooter({
+      text: "DESA TULUS • Cari Mabar",
+      iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless"
+    })
     .setTimestamp();
 }
 
@@ -3850,19 +3909,19 @@ function buildMabarButtons({ hostId, voiceChannelId }) {
   return new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId(`mabar_join_${voiceChannelId || "none"}`)
-      .setLabel("Masuk Voice")
+      .setLabel("Join Voice")
       .setEmoji("🔊")
       .setStyle(ButtonStyle.Success),
 
     new ButtonBuilder()
       .setCustomId(`mabar_dm_${hostId}`)
-      .setLabel("Chat Host")
+      .setLabel("DM Host")
       .setEmoji("📩")
       .setStyle(ButtonStyle.Secondary),
 
     new ButtonBuilder()
       .setCustomId("mabar_open_menu")
-      .setLabel("Buat Mabar")
+      .setLabel("Cari Mabar")
       .setEmoji("🔎")
       .setStyle(ButtonStyle.Primary)
   );
@@ -3878,34 +3937,48 @@ async function createMabarPost(interaction, payload) {
   const host = interaction.user;
   const memberVoiceChannel = interaction.member?.voice?.channel || null;
   const voiceChannelId = memberVoiceChannel?.id || null;
+  const gameMention = getGameMention(payload.game);
 
   const embed = buildMabarEmbed({ host, ...payload });
   const row = buildMabarButtons({ hostId: host.id, voiceChannelId });
 
   const message = await channel.send({
+    content: `${host} sedang mencari mabar ${gameMention} ⚔️`,
     embeds: [embed],
-    components: [row]
+    components: [row],
+    allowedMentions: {
+      users: [host.id],
+      roles: config.gameRoleIds?.[payload.game] ? [config.gameRoleIds[payload.game]] : []
+    }
   });
 
   let thread = null;
   try {
-    const safeGameName = payload.game.length > 24 ? payload.game.slice(0, 24) : payload.game;
-    const safeUsername = host.username.length > 20 ? host.username.slice(0, 20) : host.username;
+    const safeGameName = String(payload.game).slice(0, 24);
+    const safeUsername = String(host.username).slice(0, 20);
 
     thread = await message.startThread({
-      name: `💬 Tanya mabar ${safeGameName} ke ${safeUsername}`,
+      name: `Tanya mabar ${safeGameName} ke ${safeUsername}`,
       autoArchiveDuration: 60,
-      reason: "Thread otomatis Hansip untuk diskusi mabar."
+      reason: "Thread diskusi Cari Mabar DESA TULUS."
     });
 
     await thread.send(
-      `💬 **Thread Mabar ${payload.game}**\n` +
-      `Host: ${host}\n` +
-      `Mode: **${payload.mode}** • Slot: **${payload.slot}** • Mulai: **${payload.waktu}**\n\n` +
-      "Silakan tanya ID, room, role, atau strategi di sini biar channel utama tetap bersih."
+      `🌾 **Pos Mabar DESA TULUS**
+` +
+      `Host: ${host}
+` +
+      `Game: **${payload.game}**
+` +
+      `Mode: **${payload.mode}** • Slot: **${payload.slot}** • Waktu: **${payload.waktu}**
+` +
+      `Voice: **${payload.voice ? "Ya" : "Tidak"}**
+
+` +
+      "Gunakan thread ini untuk bertanya ID, room, role, atau pembagian tim supaya channel utama tetap rapi."
     );
   } catch (error) {
-    console.log("⚠️ Thread mabar gagal dibuat. Cek permission Create Public Threads.");
+    console.log("⚠️ Thread Cari Mabar gagal dibuat. Pastikan izin Create Public Threads aktif.");
   }
 
   pushMabarData({
@@ -3932,27 +4005,28 @@ function selectedText(value) {
 }
 
 function buildClickMabarEmbed(session, stepTitle) {
-  const serverName = config.serverName || "DESA TULUS";
-
   return new EmbedBuilder()
-    .setColor(config.embedColor || "#63B3FF")
-    .setTitle("🔎 Buat Post Mabar")
+    .setColor("#7DBD77")
+    .setTitle("🌾 Form Cari Mabar Desa")
     .setDescription(
-      `${stepTitle}\n\n` +
-      "> Pilih satu-satu lewat menu di bawah. Tidak perlu ngetik panjang.\n\n" +
-      "```ansi\n" +
-      "DESA TULUS • MABAR FORM\n" +
-      "```"
+      `${stepTitle}
+
+` +
+      "Pilih tahapnya satu per satu. Pak Hansip akan membuat post mabar yang ringkas dan rapi."
     )
     .addFields(
-      { name: "🎮 Platform", value: selectedText(session.platform), inline: true },
-      { name: "🕹️ Game", value: selectedText(session.game), inline: true },
-      { name: "🧩 Mode", value: selectedText(session.mode), inline: true },
-      { name: "👥 Slot", value: session.slot ? `**${session.slot} orang**` : "Belum dipilih", inline: true },
-      { name: "🕒 Waktu", value: selectedText(session.waktu), inline: true },
-      { name: "🎙️ Voice", value: session.voice === null ? "Belum dipilih" : `**${yesNo(session.voice)}**`, inline: true }
+      { name: "📱 Platform", value: selectedText(session.platform), inline: true },
+      { name: "🎮 Game", value: selectedText(session.game), inline: true },
+      { name: "🍀 Mode", value: selectedText(session.mode), inline: true },
+      { name: "👥 Slot", value: session.slot ? `**${session.slot}**` : "Belum dipilih", inline: true },
+      { name: "🕘 Waktu", value: selectedText(session.waktu), inline: true },
+      { name: "🗣️ Voice", value: session.voice === null ? "Belum dipilih" : `**${yesNo(session.voice)}**`, inline: true }
     )
-    .setFooter({ text: `${serverName} • Tinggal klik, bot yang post` });
+    .setFooter({
+      text: "DESA TULUS • Form Cari Mabar",
+      iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless"
+    })
+    .setTimestamp();
 }
 
 function buildSelectRow(customId, placeholder, options) {
@@ -4086,33 +4160,16 @@ async function finishClickMabar(interaction) {
 }
 
 async function sendMabarPanel(interaction) {
-  const serverName = config.serverName || "DESA TULUS";
+  const row = buildSelectRow(
+    "mabar_panel_platform",
+    "🎮 Pilih platform untuk mulai cari mabar",
+    PLATFORM_OPTIONS
+  );
 
-  const embed = new EmbedBuilder()
-    .setColor(config.embedColor || "#63B3FF")
-    .setAuthor({
-      name: `${serverName} • Matchmaking Center`,
-      iconURL: interaction.client.user.displayAvatarURL({ size: 128 })
-    })
-    .setTitle("⚔️ CARI MABAR")
-    .setDescription(
-      "> Tempat warga **DESA TULUS** cari teman main tanpa spam channel.\n" +
-      "> Tinggal klik menu di bawah, pilih game, lalu Hansip akan bikin post mabar otomatis.\n\n" +
-      "**Alur cepat:**\n" +
-      "`🎮 Platform` → `🕹️ Game` → `🧩 Mode` → `👥 Slot` → `🕒 Waktu` → `🎙️ Voice`\n\n" +
-      "**Hasilnya:** embed mabar rapi, tombol join voice, tombol chat host, dan thread diskusi otomatis."
-    )
-    .addFields(
-      { name: "✨ Simple", value: "Tidak perlu ngetik panjang", inline: true },
-      { name: "💬 Rapi", value: "Diskusi masuk ke thread", inline: true },
-      { name: "🔊 Cepat", value: "Join voice lewat tombol", inline: true }
-    )
-    .setFooter({ text: `${serverName} • Pilih platform untuk mulai cari mabar` })
-    .setTimestamp();
-
-  const row = buildSelectRow("mabar_panel_platform", "🎮 Klik di sini untuk mulai cari mabar", PLATFORM_OPTIONS);
-
-  await interaction.reply({ embeds: [embed], components: [row] });
+  await interaction.reply({
+    embeds: [buildTextMabarPanelEmbed()],
+    components: [row]
+  });
 }
 
 /* =========================
@@ -4483,7 +4540,7 @@ function defaultGameWorld() {
   return { areas: ["Kampung Tulus", "Hutan Santai", "Gua Kopi", "Pulau Juragan", "Pasar Malam OT", "Menara Pak RW", "Dungeon 404", "Warung Tulus", "Arena Boss", "Taman Pet"], weather: "Cerah Tulus", npc: ADVENTURE_NPCS[0], updatedAt: new Date().toISOString() };
 }
 function defaultGameStory() {
-  return { chapters: ["Warga Baru Datang", "Misteri Warung Hilang", "Pulau Tulus Terbuka", "Pak RW Mode Serius", "Boss AFK Bangkit", "Festival DESA TULUS", "Rahasia Pulau Juragan", "Kota Event Terbuka", "Dungeon Error 404", "Legenda Warga Tulus", "Kunci Secret OT", "Season Para Warga"], progress: {} };
+  return { chapters: ["Warga Baru Datang", "Misteri Warung Hilang", "Pulau Tulus Terbuka", "Pak RW Mode Serius", "Boss AFK Bangkit", "Festival DESA TULUS", "Rahasia Pulau Juragan", "Kota Event Terbuka", "Dungeon Error 404", "Legenda warga DESA TULUS", "Kunci Secret OT", "Season Para Warga"], progress: {} };
 }
 function defaultGameRisk() {
   return { history: [], daily: {}, reminder: "Coin Hansip hanya coin game fiktif dan tidak bisa dicairkan menjadi uang asli." };
@@ -7276,17 +7333,25 @@ async function cmdInfo(message) {
 }
 
 function buildTextMabarPanelEmbed() {
-  const serverName = config.serverName || "DESA TULUS";
   return new EmbedBuilder()
-    .setColor(config.embedColor || "#63B3FF")
-    .setAuthor({ name: `${serverName} • Matchmaking Center`, iconURL: client.user?.displayAvatarURL({ size: 128 }) })
-    .setTitle("⚔️ CARI MABAR")
+    .setColor("#7DBD77")
+    .setTitle("🌾 CARI MABAR DESA TULUS")
     .setDescription(
-      "> Tempat warga DESA TULUS cari teman main tanpa spam channel.\n" +
-      "> Klik menu di bawah, pilih game, lalu Hansip akan bikin post mabar otomatis.\n\n" +
-      "**Alur:** `Platform` → `Game` → `Mode` → `Slot` → `Waktu` → `Voice`."
+      `Cari teman main tanpa memenuhi channel dengan pesan panjang.
+
+**Alur:** \`Platform\` → \`Game\` → \`Mode\` → \`Slot\` → \`Waktu\` → \`Voice\`
+
+Tersedia banyak pilihan game **Mobile** dan **PC**. Setelah selesai, Pak Hansip akan membuat post ringkas, tiga tombol, serta thread diskusi otomatis.`
     )
-    .setFooter({ text: `${serverName} • Panel Mabar` })
+    .addFields(
+      { name: "📱 Mobile", value: `${GAME_OPTIONS.Mobile.length} pilihan game`, inline: true },
+      { name: "💻 PC", value: `${GAME_OPTIONS.PC.length} pilihan game`, inline: true },
+      { name: "🧵 Rapi", value: "Thread dibuat otomatis", inline: true }
+    )
+    .setFooter({
+      text: "DESA TULUS • Panel Cari Mabar",
+      iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless"
+    })
     .setTimestamp();
 }
 
@@ -9792,7 +9857,7 @@ const OTO_NPC_CATALOG_V145 = {
   ],
   mythic: [
     { id:"bekiw_mode_royale", emoji:"🤠", name:"Bekiw Mode Royale", rarity:"mythic", element:"Royal", power:1500 },
-    { id:"guardian_orang_tulus", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
+    { id:"guardian_DESA TULUS", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
     { id:"raja_hoki_biru", emoji:"🧛", name:"Raja Hoki Biru", rarity:"mythic", element:"Luck", power:1660 },
     { id:"neon_emperor_ot", emoji:"🧞", name:"Neon Emperor OT", rarity:"mythic", element:"Neon", power:1740 },
     { id:"core_guardian_tulus", emoji:"🧝", name:"Core Guardian Tulus", rarity:"mythic", element:"Core", power:1820 }
@@ -10140,7 +10205,7 @@ async function otoCmdBattle(message) {
    - Tetap tanpa image/gambar/Canvas/AttachmentBuilder/setImage untuk Hansip.
 ========================= */
 
-const OT_GLOBAL_FOOTER_EMOJI_V146 = "<a:orangtulus:1513686597584031804>";
+const OT_GLOBAL_FOOTER_EMOJI_V146 = "<a:Desa_Tulus:1516424353934348299>";
 const OT_GLOBAL_FOOTER_PREFIX_V146 = "DESA TULUS •";
 
 function otFooterV146(suffix = "") {
@@ -10165,11 +10230,11 @@ function otApplyFooterV146(embed, suffix = "Hansip") {
    VISUAL FOOTER EMOJI RENDER FIX v1.47.0
    Penting:
    - Discord tidak merender custom/animated emoji di footer asli embed.
-   - Karena itu emoji <a:orangtulus:1513686597584031804> dipasang sebagai baris terakhir description.
+   - Karena itu emoji <a:Desa_Tulus:1516424353934348299> dipasang sebagai baris terakhir description.
    - Footer asli tetap plain text agar tidak muncul mentah.
 ========================= */
 
-const OT_VISUAL_FOOTER_EMOJI_V147 = "<a:orangtulus:1513686597584031804>";
+const OT_VISUAL_FOOTER_EMOJI_V147 = "<a:Desa_Tulus:1516424353934348299>";
 const OT_VISUAL_FOOTER_PREFIX_V147 = "<a:Desa_Tulus:1516424353934348299> DESA TULUS •";
 
 function otPlainFooterV147(suffix = "Hansip") {
@@ -10245,12 +10310,12 @@ if (typeof otoV144CleanEmbed === "function") {
    - Footer asli embed dikosongkan/dihapus supaya tidak muncul dobel.
 ========================= */
 
-const OT_SINGLE_VISUAL_FOOTER_EMOJI_V148 = "<a:orangtulus:1513686597584031804>";
+const OT_SINGLE_VISUAL_FOOTER_EMOJI_V148 = "<a:Desa_Tulus:1516424353934348299>";
 const OT_SINGLE_VISUAL_FOOTER_PREFIX_V148 = "<a:Desa_Tulus:1516424353934348299> DESA TULUS •";
 
 function otSuffixFromFooterV148(footer = "Hansip") {
   const clean = String(footer || "Hansip")
-    .replace(/<a:orangtulus:1513686597584031804>\s*/g, "")
+    .replace(/<a:Desa_Tulus:1516424353934348299>\s*/g, "")
     .replace(/^DESA TULUS\s*•\s*/i, "")
     .trim();
   return clean || "Hansip";
@@ -10274,7 +10339,7 @@ function otAppendSingleVisualFooterV148(description = "", suffix = "Hansip") {
 
   // Remove old visual footer lines to prevent duplicates.
   desc = desc
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•\s*Hansip[^\n]*/g, "")
     .trimEnd();
 
@@ -10339,7 +10404,7 @@ if (typeof otoBaseEmbed === "function") {
    - Berlaku untuk Hansip, AFK, Mabar, Sambung Kata, Anti-Scam, Dashboard/Panel, dan fitur embed lain.
 ========================= */
 
-const OT_GLOBAL_VISUAL_FOOTER_EMOJI_V149 = "<a:orangtulus:1513686597584031804>";
+const OT_GLOBAL_VISUAL_FOOTER_EMOJI_V149 = "<a:Desa_Tulus:1516424353934348299>";
 const OT_GLOBAL_VISUAL_FOOTER_PREFIX_V149 = "<a:Desa_Tulus:1516424353934348299> DESA TULUS •";
 
 function otFooterSuffixV149(input = "Hansip") {
@@ -10347,7 +10412,7 @@ function otFooterSuffixV149(input = "Hansip") {
   if (typeof input === "string") text = input;
   else if (input && typeof input === "object") text = input.text || "";
   text = String(text || "Hansip")
-    .replace(/<a:orangtulus:1513686597584031804>\s*/g, "")
+    .replace(/<a:Desa_Tulus:1516424353934348299>\s*/g, "")
     .replace(/^DESA TULUS\s*•\s*/i, "")
     .trim();
   return text || "Hansip";
@@ -10359,7 +10424,7 @@ function otVisualFooterLineV149(input = "Hansip") {
 
 function otStripFooterLinesV149(description = "") {
   return String(description || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
 }
@@ -10709,7 +10774,7 @@ const OTO_CATALOG_V151 = {
   ],
   mythic: [
     { id:"bekiw_mode_royale", emoji:"🤠", name:"Bekiw Mode Royale", rarity:"mythic", element:"Royal", power:1500 },
-    { id:"guardian_orang_tulus", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
+    { id:"guardian_DESA TULUS", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
     { id:"raja_hoki_biru", emoji:"🧛", name:"Raja Hoki Biru", rarity:"mythic", element:"Luck", power:1660 },
     { id:"neon_emperor_ot", emoji:"🧞", name:"Neon Emperor OT", rarity:"mythic", element:"Neon", power:1740 },
     { id:"core_guardian_tulus", emoji:"🧝", name:"Core Guardian Tulus", rarity:"mythic", element:"Core", power:1820 }
@@ -10725,7 +10790,7 @@ const OTO_CATALOG_V151 = {
 
 function otoV151Footer(desc = "", suffix = "Hansip") {
   let clean = String(desc || "").trimEnd()
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   const end = suffix && suffix !== "Hansip" ? `<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}` : OTO_BIG_V151.footer;
@@ -11346,12 +11411,12 @@ if (typeof processOtoCommand === "function" && !processOtoCommand.__otflowFixV15
    <a:clover:...>Luck: 31 • Normal
    ✅ NPC sudah tersimpan ke collection.
 
-   <a:orangtulus:...> DESA TULUS • Hansip Hunt
+   <a:DESA TULUS:...> DESA TULUS • Hansip Hunt
 ========================= */
 
 function otoV154CleanFooter(desc = "", suffix = "Hansip Hunt") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
@@ -11595,7 +11660,7 @@ const OTO_NPC_CATALOG_V155 = {
   ],
   mythic: [
     { id:"bekiw_mode_royale", emoji:"🤠", name:"Bekiw Mode Royale", rarity:"mythic", element:"Royal", power:1500 },
-    { id:"guardian_orang_tulus", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
+    { id:"guardian_DESA TULUS", emoji:"👑", name:"Guardian DESA TULUS", rarity:"mythic", element:"Tulus", power:1580 },
     { id:"raja_hoki_biru", emoji:"🧛", name:"Raja Hoki Biru", rarity:"mythic", element:"Luck", power:1660 },
     { id:"neon_emperor_ot", emoji:"🧞", name:"Neon Emperor OT", rarity:"mythic", element:"Neon", power:1740 },
     { id:"core_guardian_tulus", emoji:"🧝", name:"Core Guardian Tulus", rarity:"mythic", element:"Core", power:1820 }
@@ -11619,7 +11684,7 @@ function otoV155Color(type = "normal") {
 
 function otoV155Footer(desc = "", suffix = "Hansip") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix || "Hansip"}`;
@@ -12076,7 +12141,7 @@ function sleepV156(ms) {
 
 function otoAnimFooterV156(desc = "", suffix = "Hansip") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix || "Hansip"}`;
@@ -12568,7 +12633,7 @@ function otoBjEnsurePlayerV157(player) {
 
 function otoBjFooterV157(desc = "", suffix = "Hansip Blackjack") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
@@ -14002,7 +14067,7 @@ function otoHuntSleepV161(ms) {
 
 function otoHuntFooterV161(desc = "", suffix = "Hansip Hunt") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
@@ -14242,7 +14307,7 @@ const OTO_ONE_MSG_V162 = {
 
 function otoOneFooterV162(desc = "", suffix = "Hansip") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
@@ -14669,7 +14734,7 @@ const OTO_PREMIUM_V163 = {
   mythic: "<a:LetterM:1513668125638398262>",
   secret: "<a:Alphabet_S:1513667784519712769>",
   luck: "<a:clover:1513671524949823639>",
-  ot: "<a:orangtulus:1513686597584031804>"
+  ot: "<a:Desa_Tulus:1516424353934348299>"
 };
 
 function otoPremiumSleepV163(ms) {
@@ -14686,7 +14751,7 @@ function otoPremiumColorV163(type = "normal") {
 
 function otoPremiumFooterV163(desc = "", suffix = "Hansip") {
   const clean = String(desc || "")
-    .replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g, "")
+    .replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g, "")
     .replace(/\n*DESA TULUS\s*•[^\n]*/g, "")
     .trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
@@ -14706,61 +14771,61 @@ function otoPremiumFramesV163(kind = "action") {
       "🌱 <:glowing_dot_blue:1513670991056736408> 🔎",
       "🌱 🔎 🎴",
       "🌱 🎴 ✨",
-      "🌱 ✨ <a:orangtulus:1513686597584031804>"
+      "🌱 ✨ <a:Desa_Tulus:1516424353934348299>"
     ],
     crate: [
       "📦 🔒 <:glowing_dot_blue:1513670991056736408>",
       "📦 🔓 ✨",
       "🎁 ✨ <:PurpleR:1513668875189878785>",
-      "🎁 💠 <a:orangtulus:1513686597584031804>"
+      "🎁 💠 <a:Desa_Tulus:1516424353934348299>"
     ],
     battle: [
       "⚔️ 🛡️ <:glowing_dot_blue:1513670991056736408>",
       "⚔️ 💥 🛡️",
       "💥 🏆 ✨",
-      "🏆 <a:orangtulus:1513686597584031804> ✨"
+      "🏆 <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     coinflip: [
       "🪙 🔄 <:glowing_dot_blue:1513670991056736408>",
       "🪙 🔄 ✨",
       "🪙 👑 ✨",
-      "👑 <a:orangtulus:1513686597584031804> ✨"
+      "👑 <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     blackjack: [
       "🃏 🎴 <:glowing_dot_blue:1513670991056736408>",
       "🃏 🎴 ✨",
       "🃏 🛑 ➕",
-      "🃏 <a:orangtulus:1513686597584031804> ✨"
+      "🃏 <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     luck: [
       "<a:clover:1513671524949823639> ✨ <:glowing_dot_blue:1513670991056736408>",
       "<a:clover:1513671524949823639> 💠 ✨",
-      "<a:clover:1513671524949823639> ✨ <a:orangtulus:1513686597584031804>",
+      "<a:clover:1513671524949823639> ✨ <a:Desa_Tulus:1516424353934348299>",
       "<a:clover:1513671524949823639> Luck loading..."
     ],
     use: [
       "🧩 ✨ <:PurpleR:1513668875189878785>",
       "🧩 🎴 ✨",
       "🧩 🌱 💠",
-      "🧩 <a:orangtulus:1513686597584031804> ✨"
+      "🧩 <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     daily: [
       "🎁 ✨ 💰",
       "🎁 ⭐ ✨",
       "💰 ⭐ 💠",
-      "🎁 <a:orangtulus:1513686597584031804> ✨"
+      "🎁 <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     quest: [
       "🎯 📜 ✨",
       "📜 🔎 💠",
       "🎯 ✅ ✨",
-      "✅ <a:orangtulus:1513686597584031804> ✨"
+      "✅ <a:Desa_Tulus:1516424353934348299> ✨"
     ],
     action: [
-      "💠 ✨ <a:orangtulus:1513686597584031804>",
+      "💠 ✨ <a:Desa_Tulus:1516424353934348299>",
       "🔄 💠 ✨",
       "✨ ✅ 💠",
-      "✅ <a:orangtulus:1513686597584031804> ✨"
+      "✅ <a:Desa_Tulus:1516424353934348299> ✨"
     ]
   };
   return frames[kind] || frames.action;
@@ -15202,7 +15267,7 @@ try {
 ========================= */
 
 const OTO_SMOOTH_V164 = {
-  ot: "<a:orangtulus:1513686597584031804>",
+  ot: "<a:Desa_Tulus:1516424353934348299>",
   dot: "<:glowing_dot_blue:1513670991056736408>",
   luck: "<a:clover:1513671524949823639>"
 };
@@ -15216,7 +15281,7 @@ function otoSmoothColorV164(type="normal"){
   return config.otoEmbedNormalColor || config.otoEmbedAccent || config.otoEmbedColor || "#00E5FF";
 }
 function otoSmoothFooterV164(desc="", suffix="Hansip"){
-  const clean=String(desc||"").replace(/\n*<a:orangtulus:1513686597584031804>\s*DESA TULUS\s*•[^\n]*/g,"").replace(/\n*DESA TULUS\s*•[^\n]*/g,"").trimEnd();
+  const clean=String(desc||"").replace(/\n*<a:Desa_Tulus:1516424353934348299>\s*DESA TULUS\s*•[^\n]*/g,"").replace(/\n*DESA TULUS\s*•[^\n]*/g,"").trimEnd();
   return `${clean}\n\n<a:Desa_Tulus:1516424353934348299> DESA TULUS • ${suffix}`;
 }
 function otoSmoothEmbedV164(desc="", suffix="Hansip", type="normal"){
@@ -16054,7 +16119,7 @@ function hansipFinalCleanTextV610(input = "") {
   let text = String(input ?? "");
 
   text = text
-    .replace(/<a:orangtulus:\d+>/gi, "<a:Desa_Tulus:1516424353934348299>")
+    .replace(/<a:DESA TULUS:\d+>/gi, "<a:Desa_Tulus:1516424353934348299>")
     .replace(/<a:Desa_Tulus:1516424353934348299>\s*:Desa_Tulus:/gi, "<a:Desa_Tulus:1516424353934348299>")
     .replace(/:Desa_Tulus:\s*/gi, "")
     .replace(/ORANG\s*TULUS/gi, "DESA TULUS")
@@ -16089,7 +16154,7 @@ function hansipFinalStripVisualFooterV610(description = "") {
     if (/^<a:Desa_Tulus:1516424353934348299>\s*DESA\s*TULUS\s*•/i.test(clean)) return false;
     if (/^:Desa_Tulus:\s*DESA\s*TULUS\s*•/i.test(clean)) return false;
     if (/^DESA\s*TULUS\s*•/i.test(clean)) return false;
-    if (/^<a:orangtulus:\d+>\s*DESA\s*TULUS\s*•/i.test(clean)) return false;
+    if (/^<a:DESA TULUS:\d+>\s*DESA\s*TULUS\s*•/i.test(clean)) return false;
     return true;
   });
   return filtered.join("\n").replace(/\n{3,}/g, "\n\n").trim();
@@ -16652,3 +16717,14 @@ console.log("✅ Hansip v6.2.1 final: footer dobel hilang, footer tinggal satu d
    Bot tidak lagi memeriksa atau menghapus pesan/gambar melalui modul tersebut.
    Fitur lain dan data lama tetap dipertahankan.
 ========================= */
+
+/* =========================
+   PAK HANSIP V7.0.0 — DESA TULUS MABAR BESAR
+   - Branding lama dibersihkan.
+   - Embed Cari Mabar dibuat compact seperti kartu referensi.
+   - Tombol: Join Voice, DM Host, Cari Mabar.
+   - Katalog 25 game Mobile dan 25 game PC.
+   - Thread diskusi otomatis tetap dipertahankan.
+   - Data mabar/member tidak direset.
+========================= */
+
