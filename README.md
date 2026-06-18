@@ -1,54 +1,34 @@
 # Pak Hansip — DESA TULUS
 
-Update besar sistem Cari Mabar DESA TULUS.
+Update v7.0.1 memperbaiki branding pada Status AFK dan seluruh output embed.
 
-## Tampilan post mabar
+## Status AFK
 
-Post mabar sekarang dibuat ringkas:
-- mention host dan role game
-- Game
-- Mode
-- Slot
-- Waktu
-- Voice
-- tombol `Join Voice`
-- tombol `DM Host`
-- tombol `Cari Mabar`
-- thread diskusi otomatis
+Tampilan sekarang:
 
-## Katalog game
+```text
+DESA TULUS | Status AFK
+😴 @Warga sekarang AFK...
+📝 Alasan: makan
+```
 
-- 25 pilihan Mobile
-- 25 pilihan PC
-- role game dapat diatur melalui `gameRoleIds`
-- dashboard Cari Mabar menampilkan seluruh katalog
+Footer memakai icon GIF DESA TULUS, tulisan `DESA TULUS`, dan timestamp Discord.
 
-## Fitur yang tetap aman
+Karena text footer tidak lagi memakai bullet di ujung, Discord akan menampilkan:
+
+```text
+DESA TULUS • Today at ...
+```
+
+bukan footer dengan bullet ganda.
+
+## Tetap dipertahankan
 
 - Prefix `h`
-- AFK
-- Mabar dan data mabar lama
+- Command `hafk`
+- Cari Mabar
 - Sambung Kata
 - Custom Status otomatis
-- Warna embed `#7DBD77`
+- Warna semua embed `#7DBD77`
 - Dashboard
 - Database dan data member
-
-## Test
-
-```bat
-cd /d "D:\Hansip"
-node --check index.js
-npm install
-npm start
-```
-
-## Railway Variables
-
-```env
-DISCORD_TOKEN=ISI_TOKEN_BOT_DISCORD_KAMU
-CLIENT_ID=ISI_CLIENT_ID_BOT_KAMU
-GUILD_ID=ISI_ID_SERVER_DESA_TULUS
-NODE_ENV=production
-DASHBOARD_ENABLED=false
-```

@@ -1,0 +1,17 @@
+LAPORAN FIX BRANDING PAK HANSIP V7.0.1
+
+YANG DIFIKS
+- Status AFK tidak lagi membaca nama server lama dari config aktif.
+- Judul Status AFK dipaksa menjadi DESA TULUS.
+- Semua payload dan embed memiliki sanitizer branding terakhir.
+- Config yang direload dipaksa memakai DESA TULUS.
+- Footer dibuat satu kali dengan text DESA TULUS dan icon GIF.
+- Bullet ganda sebelum timestamp Discord dihilangkan.
+- Warna embed tetap #7DBD77.
+- Panduan AFK memakai command hafk.
+
+DATA AMAN
+- Data AFK tidak direset.
+- Data mabar tidak direset.
+- Database dan data member tidak diubah.
+- Command dan fitur lain tetap dipertahankan.

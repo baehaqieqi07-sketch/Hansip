@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "7.0.0",
-  "description": "Pak Hansip DESA TULUS dengan sistem Cari Mabar besar, compact, dan katalog 50 pilihan game Mobile/PC.",
+  "version": "7.0.1",
+  "description": "Pak Hansip DESA TULUS dengan perbaikan branding total pada Status AFK dan semua embed.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

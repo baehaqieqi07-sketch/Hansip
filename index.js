@@ -2192,7 +2192,7 @@ function dashboardFeatureItems() {
     { key: "gameHub", icon: "🎮", title: "Hansip", desc: "Game satu channel, auto event, shop, quest, item, dan leaderboard.", active: Boolean(config.gameEnabled !== false), tab: "game" },
     { key: "mabar", icon: "⚔️", title: "Cari Mabar", desc: "Panel cari teman main, role game, dan channel mabar.", active: Boolean(config.mabarChannelId), tab: "mabar" },
     { key: "truth", icon: "🎭", title: "Truth or Dare", desc: "Panel Truth/Dare bahasa Indonesia.", active: Boolean(config.truthOrDareChannelId), tab: "truth" },
-    { key: "afk", icon: "😴", title: "AFK / otafk", desc: "Status AFK, prefix nickname, dan auto remove saat chat.", active: Boolean(config.afkChannelId), tab: "afk" },
+    { key: "afk", icon: "😴", title: "AFK / hafk", desc: "Status AFK, prefix nickname, dan auto remove saat chat.", active: Boolean(config.afkChannelId), tab: "afk" },
     { key: "sambung", icon: "📖", title: "Sambung Kata", desc: "Game sambung kata otomatis sampai target kata.", active: Boolean(config.sambungKataChannelId), tab: "sambung" },
     { key: "mongo", icon: "💾", title: "MongoDB Anti Reset", desc: "Data bot disimpan permanen agar aman dari reset.", active: Boolean(mongoReady), tab: "status" },
     { key: "discord", icon: "🗺️", title: "Discord Map", desc: "Channel dan role server masuk dashboard.", active: true, tab: "channels" },
@@ -2269,7 +2269,7 @@ function dashboardContent(tab, notice = "") {
     dashboardInput("afkNicknamePrefix", "Prefix Nickname AFK"),
     dashboardInput("afkRemoveOnMessage", "AFK hilang otomatis saat user chat", { type: "checkbox", wide: true }),
     dashboardInput("ownerLogChannelId", "Owner Log Channel ID")
-  ].join(""), "😴 AFK / otafk Settings") + `<div class="panel hint-panel"><b>Catatan AFK:</b> Bot akan menghapus prefix ${htmlEscape(config.afkNicknamePrefix || "[AFK]")} saat user chat lagi, selama role bot cukup tinggi dan punya Manage Nicknames.</div>`;
+  ].join(""), "😴 AFK / hafk Settings") + `<div class="panel hint-panel"><b>Catatan AFK:</b> Bot akan menghapus prefix ${htmlEscape(config.afkNicknamePrefix || "[AFK]")} saat user chat lagi, selama role bot cukup tinggi dan punya Manage Nicknames.</div>`;
 
   if (tab === "sambung") return noticeBox + dashboardSaveForm("sambung", [
     dashboardInput("sambungKataChannelId", "Channel Sambung Kata"),
@@ -3071,10 +3071,10 @@ function buildTruthDareButtons() {
 }
 
 function buildTruthDarePanel(interaction) {
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
 
   return new EmbedBuilder()
-    .setColor(config.gameEmbedColor || config.embedColor || "#0B5CFF")
+    .setColor("#7DBD77")
     .setAuthor({
       name: `${serverName} • Truth or Dare`,
       iconURL: interaction.client.user.displayAvatarURL({ size: 128 })
@@ -3105,7 +3105,7 @@ function buildTruthDareResult(interaction, requestedType) {
   const typeLabel = isTruth ? "TRUTH" : "DARE";
   const title = isTruth ? "🟢 Truth" : "🔴 Dare";
   const id = makeTodId(typeLabel);
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
 
   return new EmbedBuilder()
     .setColor(isTruth ? "#22C55E" : "#EF4444")
@@ -3161,10 +3161,10 @@ async function sendTruthDareResult(interaction, type) {
 
 /* =========================
    STATUS AFK INDONESIA
-   Contoh: otafk mandi
+   Contoh: hafk mandi
 ========================= */
 const AFK_PLACEHOLDER = "ISI_ID_CHANNEL_STATUS_AFK";
-const AFK_TRIGGERS = ["otafk", "rwafk", "afk", "!afk", ".afk"];
+const AFK_TRIGGERS = ["hafk"];
 
 function readAfkData() {
   try {
@@ -3244,9 +3244,9 @@ function formatAfkDuration(sinceMs) {
 }
 
 function buildAfkEmbed(member, reason, nicknameChanged = true) {
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
   const embed = new EmbedBuilder()
-    .setColor("#FACC15")
+    .setColor("#7DBD77")
     .setAuthor({
       name: `${serverName} | Status AFK`,
       iconURL: member.user.displayAvatarURL({ size: 128 })
@@ -3256,7 +3256,7 @@ function buildAfkEmbed(member, reason, nicknameChanged = true) {
 ` +
       `📝 **Alasan:** ${reason}`
     )
-    .setFooter({ text: `${serverName} • Status AFK` })
+    .setFooter({ text: "DESA TULUS", iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless" })
     .setTimestamp();
 
   if (!nicknameChanged) {
@@ -3271,9 +3271,9 @@ function buildAfkEmbed(member, reason, nicknameChanged = true) {
 }
 
 function buildAfkSetupEmbed(interaction) {
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
   return new EmbedBuilder()
-    .setColor(config.gameEmbedColor || config.embedColor || "#0B5CFF")
+    .setColor("#7DBD77")
     .setAuthor({
       name: `${serverName} • Status AFK`,
       iconURL: interaction.client.user.displayAvatarURL({ size: 128 })
@@ -3282,8 +3282,8 @@ function buildAfkSetupEmbed(interaction) {
     .setDescription(
       "> Tempat warga memberi tahu kalau sedang AFK, istirahat, mandi, belajar, atau lagi tidak bisa balas chat.\n\n" +
       "**Cara pakai cepat:**\n" +
-      "`otafk alasan` atau `rwafk alasan` atau `afk alasan`\n" +
-      "Contoh: `otafk mandi dulu`\n\n" +
+      "`hafk alasan`\n" +
+      "Contoh: `hafk makan dulu`\n\n" +
       "**Bisa juga pakai slash command:**\n" +
       "`/afk alasan: mandi dulu`\n\n" +
       "Kalau user AFK chat lagi, Hansip akan otomatis menghapus status AFK-nya."
@@ -3292,7 +3292,7 @@ function buildAfkSetupEmbed(interaction) {
       { name: "✅ Otomatis", value: "Nickname bisa jadi `[AFK] Nama` kalau bot punya izin Manage Nicknames.", inline: false },
       { name: "💬 Mention AFK", value: "Kalau orang yang AFK di-mention, Hansip akan kasih tahu alasannya.", inline: false }
     )
-    .setFooter({ text: `${serverName} • AFK dengan rapi dan jelas` })
+    .setFooter({ text: "DESA TULUS", iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless" })
     .setTimestamp();
 }
 
@@ -3373,16 +3373,16 @@ async function removeAfkStatus(member, outputChannel, options = {}) {
 
   const nicknameRestored = await restoreAfkNickname(member, saved || null);
 
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
   const durationText = saved?.since
     ? `\n⏱️ Durasi AFK: **${formatAfkDuration(saved.since)}**`
     : "\n🧹 Nickname `[AFK]` yang nyangkut sudah dibersihkan.";
 
   const embed = new EmbedBuilder()
-    .setColor("#22C55E")
+    .setColor("#7DBD77")
     .setAuthor({ name: `${serverName} | Status AFK`, iconURL: member.user.displayAvatarURL({ size: 128 }) })
     .setDescription(`✅ ${member} sudah **kembali** dari AFK.${durationText}`)
-    .setFooter({ text: `${serverName} • Selamat datang kembali` })
+    .setFooter({ text: "DESA TULUS", iconURL: "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless" })
     .setTimestamp();
 
   if (!nicknameRestored) {
@@ -3526,9 +3526,9 @@ function makeSambungStory(words) {
 }
 
 function buildSambungPanelEmbed(interaction) {
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
   return new EmbedBuilder()
-    .setColor(config.gameEmbedColor || config.embedColor || "#0B5CFF")
+    .setColor("#7DBD77")
     .setAuthor({
       name: `${serverName} • Sambung Kata`,
       iconURL: interaction.client.user.displayAvatarURL({ size: 128 })
@@ -3553,14 +3553,14 @@ function buildSambungPanelEmbed(interaction) {
 }
 
 function buildSambungCompleteEmbed(data, completedWords) {
-  const serverName = config.serverName || "DESA TULUS";
+  const serverName = "DESA TULUS";
   const uniqueContributors = [...new Set(data.contributors || [])];
   const totalContributors = uniqueContributors.length || data.contributions.length || 1;
   const title = makeSambungTitle(completedWords, data.round);
   const story = makeSambungStory(completedWords);
 
   return new EmbedBuilder()
-    .setColor("#FACC15")
+    .setColor("#7DBD77")
     .setTitle("📖✨ CERITA SAMBUNG KATA WARGA")
     .setDescription(
       `📝 **JUDUL**\n${title}\n\n` +
@@ -3597,7 +3597,7 @@ async function sendSambungStatus(interaction) {
   const storyPreview = data.words.length ? makeSambungStory(data.words).slice(0, 900) : "Belum ada kata.";
 
   const embed = new EmbedBuilder()
-    .setColor(config.gameEmbedColor || config.embedColor || "#0B5CFF")
+    .setColor("#7DBD77")
     .setTitle("📖 Status Sambung Kata")
     .setDescription(
       `Round: **${data.round}**\n` +
@@ -4629,7 +4629,7 @@ function todayKey() {
 
 function gameBaseEmbed(title, description = "") {
   const embed = new EmbedBuilder()
-    .setColor(config.gameEmbedColor || config.embedColor || "#0B5CFF")
+    .setColor("#7DBD77")
     .setTitle(title)
     .setDescription(description)
     .setFooter({ text: "DESA TULUS • Hansip" })
@@ -7323,7 +7323,7 @@ async function cmdPing(message) {
 }
 
 async function cmdInfo(message) {
-  const embed = otBaseEmbed("ℹ️ Info Hansip", `Hansip membantu server **${message.guild?.name || config.serverName || "DESA TULUS"}** lewat fitur mabar, AFK, sambung kata, dan dashboard.\n\nCommand utama: **othelp**, **otping**, **otmabar**, **otafk**.`);
+  const embed = otBaseEmbed("ℹ️ Info Hansip", `Hansip membantu server **${message.guild?.name || config.serverName || "DESA TULUS"}** lewat fitur mabar, AFK, sambung kata, dan dashboard.\n\nCommand utama: **hhelp**, **hping**, **hmabar**, **hafk**.`);
   embed.addFields(
     { name: "Versi", value: String(config.botVersion || "1.16.0-command-center"), inline: true },
     { name: "Uptime", value: uptimeText(), inline: true },
@@ -7437,7 +7437,7 @@ async function sendNamedPanel(message, type) {
   } else if (panelType === "truth" || panelType === "truth-dare") {
     sent = await message.channel.send({ embeds: [buildTruthDarePanel({ client })], components: [buildTruthDareButtons()] });
   } else if (panelType === "help") {
-    sent = await message.channel.send({ embeds: [otBaseEmbed("⌨️ Panel Bantuan Hansip", "Gunakan `othelp` untuk melihat command sesuai permission.\nMember: `otping`, `otinfo`, `otafk`, `otmabar`, `otsaran`.\nStaff/Owner akan melihat command tambahan otomatis.")] });
+    sent = await message.channel.send({ embeds: [otBaseEmbed("⌨️ Panel Bantuan Hansip", "Gunakan `hhelp` untuk melihat command sesuai permission.\nMember: `hping`, `hinfo`, `hafk`, `hmabar`, `hsaran`.\nStaff/Owner akan melihat command tambahan otomatis.")] });
   } else if (panelType === "saran") {
     sent = await message.channel.send({ embeds: [otBaseEmbed("💡 Panel Saran", "Kirim saran dengan format:\n`otsaran isi saran kamu`\n\nSaran akan masuk ke channel saran jika sudah diatur owner.")] });
   } else {
@@ -16727,4 +16727,233 @@ console.log("✅ Hansip v6.2.1 final: footer dobel hilang, footer tinggal satu d
    - Thread diskusi otomatis tetap dipertahankan.
    - Data mabar/member tidak direset.
 ========================= */
+
+
+/* =========================
+   PAK HANSIP V7.0.1 — FINAL BRAND SANITIZER
+   - Semua output lama otomatis diubah menjadi DESA TULUS.
+   - Config aktif lama tidak boleh mengembalikan nama lama.
+   - Semua embed tetap #7DBD77.
+   - Footer final hanya "DESA TULUS" + icon GIF + timestamp.
+========================= */
+const HANSIP_V701_SERVER_NAME = "DESA TULUS";
+const HANSIP_V701_EMBED_COLOR = 0x7DBD77;
+const HANSIP_V701_FOOTER_TEXT = "DESA TULUS";
+const HANSIP_V701_FOOTER_ICON =
+  "https://cdn.discordapp.com/emojis/1516424353934348299.gif?size=64&quality=lossless";
+
+function hansipV701CleanBrandText(input = "") {
+  return String(input ?? "")
+    .replace(/<a:DESA TULUS:\d+>/gi, "<a:Desa_Tulus:1516424353934348299>")
+    .replace(/ORANG[\s_-]*TULUS/gi, HANSIP_V701_SERVER_NAME)
+    .replace(/Orang\s+Tulus/gi, HANSIP_V701_SERVER_NAME)
+    .replace(/DESA TULUS/gi, "Desa_Tulus")
+    .replace(/DESA\s*TULUS\s*•\s*DESA\s*TULUS\s*•/gi, HANSIP_V701_SERVER_NAME)
+    .replace(/DESA\s*TULUS\s*•\s*$/gi, HANSIP_V701_SERVER_NAME)
+    .trim();
+}
+
+function hansipV701ForceConfigBrand(target) {
+  if (!target || typeof target !== "object") return target;
+
+  target.serverName = HANSIP_V701_SERVER_NAME;
+  target.guildName = HANSIP_V701_SERVER_NAME;
+  target.communityName = HANSIP_V701_SERVER_NAME;
+  target.brandName = HANSIP_V701_SERVER_NAME;
+  target.embedColor = "#7DBD77";
+  target.color = "#7DBD77";
+  target.themeColor = "#7DBD77";
+  target.accentColor = "#7DBD77";
+
+  return target;
+}
+
+try {
+  if (typeof config !== "undefined") {
+    hansipV701ForceConfigBrand(config);
+  }
+
+  if (typeof loadConfig === "function" && !loadConfig.__hansipV701Wrapped) {
+    const oldLoadConfigV701 = loadConfig;
+
+    loadConfig = function(...args) {
+      return hansipV701ForceConfigBrand(oldLoadConfigV701(...args));
+    };
+
+    loadConfig.__hansipV701Wrapped = true;
+  }
+
+  if (typeof saveConfig === "function" && !saveConfig.__hansipV701Wrapped) {
+    const oldSaveConfigV701 = saveConfig;
+
+    saveConfig = function(nextConfig, ...args) {
+      return oldSaveConfigV701(
+        hansipV701ForceConfigBrand(nextConfig || config),
+        ...args
+      );
+    };
+
+    saveConfig.__hansipV701Wrapped = true;
+  }
+} catch (error) {
+  console.error("[HANSIP BRAND] Gagal memaksa branding DESA TULUS:", error);
+}
+
+function hansipV701CleanEmbedJson(data) {
+  if (!data || typeof data !== "object") return data;
+
+  if (typeof data.title === "string") {
+    data.title = hansipV701CleanBrandText(data.title);
+  }
+
+  if (typeof data.description === "string") {
+    data.description = hansipV701CleanBrandText(data.description);
+  }
+
+  if (data.author && typeof data.author.name === "string") {
+    data.author.name = hansipV701CleanBrandText(data.author.name);
+  }
+
+  if (Array.isArray(data.fields)) {
+    data.fields = data.fields.map((field) => ({
+      ...field,
+      name:
+        typeof field.name === "string"
+          ? hansipV701CleanBrandText(field.name)
+          : field.name,
+      value:
+        typeof field.value === "string"
+          ? hansipV701CleanBrandText(field.value)
+          : field.value
+    }));
+  }
+
+  data.color = HANSIP_V701_EMBED_COLOR;
+  data.footer = {
+    text: HANSIP_V701_FOOTER_TEXT,
+    icon_url: HANSIP_V701_FOOTER_ICON
+  };
+
+  if (!data.timestamp) {
+    data.timestamp = new Date().toISOString();
+  }
+
+  return data;
+}
+
+function hansipV701CleanPayload(payload) {
+  if (typeof payload === "string") {
+    return hansipV701CleanBrandText(payload);
+  }
+
+  if (!payload || typeof payload !== "object") {
+    return payload;
+  }
+
+  const copy = Array.isArray(payload) ? [...payload] : { ...payload };
+
+  if (typeof copy.content === "string") {
+    copy.content = hansipV701CleanBrandText(copy.content);
+  }
+
+  if (Array.isArray(copy.embeds)) {
+    copy.embeds = copy.embeds.map((embed) => {
+      try {
+        if (embed && typeof embed.toJSON === "function") {
+          return embed;
+        }
+
+        return hansipV701CleanEmbedJson({ ...embed });
+      } catch (_) {
+        return embed;
+      }
+    });
+  }
+
+  return copy;
+}
+
+try {
+  if (
+    typeof EmbedBuilder !== "undefined" &&
+    EmbedBuilder.prototype &&
+    !EmbedBuilder.prototype.__hansipV701BrandClean
+  ) {
+    const oldToJSONV701 = EmbedBuilder.prototype.toJSON;
+
+    EmbedBuilder.prototype.toJSON = function(...args) {
+      const raw = oldToJSONV701
+        ? oldToJSONV701.apply(this, args)
+        : this.data || {};
+
+      return hansipV701CleanEmbedJson(raw);
+    };
+
+    EmbedBuilder.prototype.__hansipV701BrandClean = true;
+  }
+} catch (error) {
+  console.error("[HANSIP BRAND] Gagal membersihkan embed:", error);
+}
+
+try {
+  const DiscordJsV701 = require("discord.js");
+
+  if (
+    DiscordJsV701.Message?.prototype &&
+    !DiscordJsV701.Message.prototype.__hansipV701BrandClean
+  ) {
+    const oldReplyV701 = DiscordJsV701.Message.prototype.reply;
+    const oldEditV701 = DiscordJsV701.Message.prototype.edit;
+
+    DiscordJsV701.Message.prototype.reply = function(payload, ...rest) {
+      return oldReplyV701.call(
+        this,
+        hansipV701CleanPayload(payload),
+        ...rest
+      );
+    };
+
+    DiscordJsV701.Message.prototype.edit = function(payload, ...rest) {
+      return oldEditV701.call(
+        this,
+        hansipV701CleanPayload(payload),
+        ...rest
+      );
+    };
+
+    DiscordJsV701.Message.prototype.__hansipV701BrandClean = true;
+  }
+
+  for (const ChannelClass of [
+    DiscordJsV701.TextChannel,
+    DiscordJsV701.NewsChannel,
+    DiscordJsV701.ThreadChannel,
+    DiscordJsV701.DMChannel,
+    DiscordJsV701.VoiceChannel
+  ].filter(Boolean)) {
+    if (
+      ChannelClass.prototype?.send &&
+      !ChannelClass.prototype.__hansipV701BrandClean
+    ) {
+      const oldSendV701 = ChannelClass.prototype.send;
+
+      ChannelClass.prototype.send = function(payload, ...rest) {
+        return oldSendV701.call(
+          this,
+          hansipV701CleanPayload(payload),
+          ...rest
+        );
+      };
+
+      ChannelClass.prototype.__hansipV701BrandClean = true;
+    }
+  }
+} catch (error) {
+  console.error("[HANSIP BRAND] Gagal membersihkan payload:", error);
+}
+
+console.log(
+  "✅ Pak Hansip v7.0.1: branding output dipaksa DESA TULUS, termasuk Status AFK."
+);
+/* END PAK HANSIP V7.0.1 — FINAL BRAND SANITIZER */
 
