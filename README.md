@@ -1,34 +1,66 @@
 # Pak Hansip — DESA TULUS
 
-Update v7.0.1 memperbaiki branding pada Status AFK dan seluruh output embed.
+Update v9.3.0: clean security center.
 
-## Status AFK
-
-Tampilan sekarang:
-
-```text
-DESA TULUS | Status AFK
-😴 @Warga sekarang AFK...
-📝 Alasan: makan
-```
-
-Footer memakai icon GIF DESA TULUS, tulisan `DESA TULUS`, dan timestamp Discord.
-
-Karena text footer tidak lagi memakai bullet di ujung, Discord akan menampilkan:
-
-```text
-DESA TULUS • Today at ...
-```
-
-bukan footer dengan bullet ganda.
-
-## Tetap dipertahankan
-
-- Prefix `h`
-- Command `hafk`
+Fokus bot:
+- Keamanan server
+- Audit Role Cepat
+- AFK Voice 24/7
+- Mute / Unmute voice khusus owner
+- AFK member
 - Cari Mabar
 - Sambung Kata
+- Laporan dan saran warga
+- Alat staff
 - Custom Status otomatis
-- Warna semua embed `#7DBD77`
-- Dashboard
-- Database dan data member
+- Dashboard read-only memakai `process.env.PORT`
+
+## Command member
+
+- `hhelp`
+- `hping`
+- `hstatus`
+- `hafk alasan`
+- `hmabar`
+- `hsambungkata`
+- `hlapor isi laporan`
+- `hsaran isi saran`
+
+## Command staff
+
+- `hsetlog #channel`
+- `hsetreport #channel`
+- `hsetsaran #channel`
+- `hsetmabar #channel`
+- `hsetsambung #channel`
+- `hsetstaff @role`
+- `hconfig`
+- `hclear 1-100`
+- `hslowmode detik`
+- `hlock`
+- `hunlock`
+- `hsay isi pesan`
+- `hnote @user catatan`
+- `hnotes @user`
+- `hwarn @user alasan`
+- `hwarnings @user`
+- `hauditrole setup/status/now/on/off`
+
+## Command owner voice
+
+- `h24/7 #voice`
+- `h24/7 status`
+- `h24/7 reconnect`
+- `h24/7 on`
+- `h24/7 off`
+- `hmute`
+- `hunmute`
+
+## Test
+
+```bat
+node --check index.js
+node --check services\afkVoiceManager.js
+npm install
+npm start
+```

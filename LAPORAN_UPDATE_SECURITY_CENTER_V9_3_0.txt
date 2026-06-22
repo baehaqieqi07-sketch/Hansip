@@ -1,0 +1,25 @@
+LAPORAN UPDATE PAK HANSIP V9.3.0
+
+DITAMBAHKAN
+- Dashboard read-only dengan process.env.PORT.
+- Setup channel: hsetlog, hsetreport, hsetsaran, hsetmabar, hsetsambung.
+- Setup staff role: hsetstaff.
+- Config viewer: hconfig.
+- Alat staff: hclear, hslowmode, hlock, hunlock, hsay.
+- Catatan staff: hnote, hnotes.
+- Warning staff: hwarn, hwarnings.
+- Laporan dan saran warga: hlapor, hsaran.
+
+TETAP ADA
+- AFK Voice 24/7.
+- hmute / hunmute.
+- Audit Role Cepat.
+- AFK member.
+- Cari Mabar.
+- Sambung Kata.
+- Custom Status otomatis.
+
+BERSIH
+- Tidak ada label lama.
+- Tidak ada fitur lama yang terpisah.
+- Tidak menyertakan .env, config.json, atau data runtime.

@@ -1,8 +1,6 @@
 .env
 config.json
 node_modules/
-npm-debug.log*
 data/*.json
+npm-debug.log*
 .git/
-.DS_Store
-Thumbs.db

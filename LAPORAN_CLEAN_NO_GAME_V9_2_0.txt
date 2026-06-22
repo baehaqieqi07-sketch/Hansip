@@ -1,0 +1,20 @@
+LAPORAN CLEAN PAK HANSIP V9.2.0
+
+DIBERSIHKAN
+- Kode fitur lama yang terpisah dari fokus Pak Hansip.
+- File panduan lama.
+- Config lama terkait fitur tersebut.
+- Output publik nama lama.
+
+TETAP ADA
+- AFK Voice 24/7.
+- hmute / hunmute.
+- Audit Role Cepat.
+- AFK member.
+- Cari Mabar.
+- Sambung Kata.
+- Custom Status.
+- Config server.
+
+DATA AMAN
+ZIP ini tidak menyertakan data runtime aktif seperti config.json dan data/*.json.
