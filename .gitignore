@@ -2,5 +2,6 @@
 config.json
 node_modules/
 data/*.json
+package-lock.json
 npm-debug.log*
 .git/

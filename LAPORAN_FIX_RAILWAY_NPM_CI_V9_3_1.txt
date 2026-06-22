@@ -1,0 +1,21 @@
+LAPORAN FIX RAILWAY V9.3.1
+
+MASALAH
+- Railway menjalankan npm ci.
+- npm ci gagal karena package-lock.json tidak sinkron.
+- Lock lama tidak memiliki @discordjs/voice dan versi dotenv tidak cocok.
+
+FIX
+- package-lock.json dihapus dari ZIP.
+- npm-shrinkwrap.json dihapus jika ada.
+- nixpacks.toml ditambahkan.
+- Install command Railway menjadi npm install --omit=dev --no-audit --no-fund.
+- package.json dirapikan.
+- .gitignore menahan package-lock.json supaya lock lama tidak ikut lagi.
+
+YANG TETAP AMAN
+- Command Pak Hansip tetap.
+- AFK Voice 24/7 tetap.
+- Audit Role tetap.
+- Dashboard tetap.
+- Data runtime tidak ikut ZIP dan tidak direset.

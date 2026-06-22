@@ -64,3 +64,16 @@ node --check services\afkVoiceManager.js
 npm install
 npm start
 ```
+
+## Fix Railway v9.3.1
+
+Build Railway sebelumnya gagal karena `package-lock.json` lama tidak sinkron dengan `package.json`.
+
+Di versi ini:
+- `package-lock.json` lama dihapus dari ZIP.
+- `nixpacks.toml` ditambahkan.
+- Railway dipaksa memakai `npm install --omit=dev --no-audit --no-fund`.
+- Dependency `@discordjs/voice`, `discord.js`, dan `dotenv` diset rapi di `package.json`.
+
+Jangan upload `package-lock.json` lama lagi.
+
