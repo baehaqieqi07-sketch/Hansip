@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "9.3.2",
-  "description": "Pak Hansip DESA TULUS security center dengan fix AFK Voice aborted/reconnect.",
+  "version": "9.3.3",
+  "description": "Pak Hansip DESA TULUS security center dengan AFK Voice soft-ready fix untuk Railway.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {

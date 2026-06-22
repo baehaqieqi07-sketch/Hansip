@@ -88,3 +88,13 @@ Fix untuk log Railway:
 
 Penyebabnya biasanya command mute/unmute atau rejoin berjalan saat koneksi voice belum benar-benar Ready. Versi ini menyimpan status mute/unmute dulu, lalu menerapkannya setelah voice siap, jadi tidak memutus proses join.
 
+## Fix AFK Voice v9.3.3
+
+Railway kadang membatalkan proses `Ready` voice karena handshake voice/UDP, walaupun request join voice sudah dikirim. Untuk mode AFK tanpa audio, v9.3.3 memakai soft-ready:
+
+- Tidak destroy koneksi saat `The operation was aborted`.
+- Tidak spam reconnect loop.
+- Status voice tetap disimpan.
+- Owner bisa cek `h24/7 status`.
+- Gunakan `h24/7 reconnect` jika bot belum terlihat di voice setelah permission dicek.
+

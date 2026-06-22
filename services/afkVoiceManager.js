@@ -59,6 +59,30 @@ function createAfkVoiceManager(options) {
     return message.includes("aborted") || message.includes("abort");
   }
 
+  function markSoftVoiceConnected(channel, reason = "voice handshake pending") {
+    internalStatus = "CONNECTED";
+    connectingLock = false;
+
+    logger.warn(`[AFK VOICE] Voice handshake belum Ready, tapi koneksi dipertahankan: ${reason}`);
+
+    saveAfkVoiceConfig({
+      guildId: channel.guild.id,
+      channelId: channel.id,
+      lastConnectedAt: nowIso(),
+      lastError: reason
+    }).catch(error => {
+      logger.error("[AFK VOICE] Gagal menyimpan soft connected:", error?.message || error);
+    });
+
+    return {
+      ok: true,
+      status: "CONNECTED",
+      channel,
+      softReady: true,
+      message: "Pak Hansip sudah diminta berjaga di voice. Jika belum terlihat, cek permission voice dan ulangi h24/7 reconnect."
+    };
+  }
+
   function getAfkVoiceConfig() {
     const config = getConfig();
     config.afkVoice = {
@@ -177,6 +201,11 @@ function createAfkVoiceManager(options) {
       }).catch(() => {});
 
       if (!manualDisconnect && !shuttingDown) {
+        if (connectingLock) {
+          logger.warn("[AFK VOICE] Voice disconnected saat masih connecting, tunggu hasil connect dulu.");
+          return;
+        }
+
         logger.warn("[AFK VOICE] Koneksi terputus, reconnect dijadwalkan.");
         scheduleReconnect("voice disconnected");
       }
@@ -287,6 +316,15 @@ function createAfkVoiceManager(options) {
       return { ok: true, status: "CONNECTED", channel, connection };
     } catch (error) {
       connectingLock = false;
+
+      // Railway / beberapa container kadang membatalkan handshake UDP voice,
+      // padahal request join voice sudah dikirim ke Discord Gateway.
+      // Untuk mode AFK tanpa audio, jangan hancurkan koneksi dan jangan loop reconnect terus.
+      if (isAbortLikeError(error)) {
+        logger.warn("[AFK VOICE] Voice Ready aborted. Koneksi dipertahankan tanpa spam reconnect.");
+        return markSoftVoiceConnected(channel, "voice ready aborted; soft keep-alive");
+      }
+
       internalStatus = "ERROR";
       logger.error("[AFK VOICE] Gagal terhubung:", error?.message || error);
 
@@ -295,7 +333,7 @@ function createAfkVoiceManager(options) {
       });
 
       if (!manualDisconnect && !shuttingDown && afkVoice.autoReconnect) {
-        scheduleReconnect(isAbortLikeError(error) ? "voice operation aborted" : (error?.message || "connect error"));
+        scheduleReconnect(error?.message || "connect error");
       }
 
       return {
@@ -461,6 +499,8 @@ function createAfkVoiceManager(options) {
       lastError: reason
     }).catch(() => {});
 
+    logger.warn(`[AFK VOICE] Reconnect dijadwalkan dalam ${Math.round(delay / 1000)} detik.`);
+
     reconnectTimer = setTimeout(async () => {
       reconnectTimer = null;
 
@@ -493,6 +533,7 @@ function createAfkVoiceManager(options) {
     if (!afkVoice.enabled) status = "DISABLED";
     else if (afkVoice.channelId && !storedChannel) status = "CHANNEL_NOT_FOUND";
     else if (connection?.state?.status === VoiceConnectionStatus.Ready) status = "CONNECTED";
+    else if (connection?.joinConfig?.channelId === afkVoice.channelId && internalStatus === "CONNECTED") status = "CONNECTED";
     else if (connectingLock) status = "CONNECTING";
     else if (reconnectTimer) status = "RECONNECTING";
     else if (!connection) status = "DISCONNECTED";

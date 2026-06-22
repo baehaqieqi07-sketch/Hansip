@@ -1,0 +1,17 @@
+LAPORAN FIX AFK VOICE V9.3.3
+
+MASALAH
+- Railway terus log "The operation was aborted".
+- Penyebab: voice Ready/handshake dibatalkan, lalu bot reconnect terus.
+
+FIX
+- Error aborted diperlakukan sebagai soft-ready untuk mode AFK tanpa audio.
+- Koneksi tidak langsung dihancurkan.
+- Reconnect loop tidak spam.
+- Status tetap tersimpan.
+- h24/7 status tetap membaca channel tersimpan dan koneksi aktif.
+- hmute/hunmute tetap disimpan dan tidak memaksa rejoin saat belum Ready.
+
+CATATAN
+- Kalau bot tetap tidak muncul di voice, kemungkinan permission voice atau environment hosting tidak mendukung voice gateway/UDP dengan stabil.
+- Bot utama, dashboard, audit role, AFK, mabar, dan sambung kata tetap berjalan.

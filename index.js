@@ -298,7 +298,7 @@ async function handleVoiceCommands(message) {
     config.afkVoice.enabled = true;
     saveConfig(config);
     const result = await afkVoice.connectAfkVoice({ reason: "owner-command", force: true });
-    await message.reply(result.ok ? `Pak Hansip sekarang berjaga 24/7 di voice channel ${result.channel}.` : result.message);
+    await message.reply(result.ok ? (result.softReady ? `Pak Hansip sudah diarahkan berjaga 24/7 di voice channel ${result.channel}. Jika belum terlihat, gunakan h24/7 status lalu h24/7 reconnect.` : `Pak Hansip sekarang berjaga 24/7 di voice channel ${result.channel}.`) : result.message);
     return true;
   }
 
@@ -312,7 +312,7 @@ async function handleVoiceCommands(message) {
       return true;
     }
     const result = await afkVoice.reconnectAfkVoice();
-    await message.reply(result.ok ? `Pak Hansip berhasil dihubungkan ulang ke ${result.channel}.` : result.message);
+    await message.reply(result.ok ? (result.softReady ? `Pak Hansip sudah diarahkan reconnect ke ${result.channel}. Jika belum terlihat, cek permission voice lalu coba lagi.` : `Pak Hansip berhasil dihubungkan ulang ke ${result.channel}.`) : result.message);
     return true;
   }
 
@@ -355,7 +355,7 @@ async function handleVoiceCommands(message) {
   } else if (before.storedChannelId) {
     await message.reply(`Lokasi penjagaan Pak Hansip berhasil dipindahkan ke ${channel}.`);
   } else {
-    await message.reply(`Pak Hansip sekarang berjaga 24/7 di voice channel ${channel}.`);
+    await message.reply(result.softReady ? `Pak Hansip sudah diarahkan berjaga 24/7 di voice channel ${channel}. Jika belum terlihat, cek permission voice dan tunggu sebentar.` : `Pak Hansip sekarang berjaga 24/7 di voice channel ${channel}.`);
   }
 
   return true;
