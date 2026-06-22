@@ -1,0 +1,14 @@
+LAPORAN UPDATE EMOJI FOOTER V9.3.4
+
+EMOJI WAJIB:
+<a:Desa_Tulus2:1518502350363430932>
+
+FORMAT FOOTER WAJIB:
+<a:Desa_Tulus2:1518502350363430932>  DESA TULUS |
+
+HASIL:
+- Semua custom emoji lama diganti.
+- Semua footer embed di index.js dipaksa memakai DESA_TULUS_FOOTER.
+- Custom status memakai emoji baru.
+- baseEmbed otomatis menambahkan emoji baru di judul.
+- config.example.json berisi desaTulusEmoji dan footerText.

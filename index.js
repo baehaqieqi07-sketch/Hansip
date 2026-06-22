@@ -21,6 +21,8 @@ const {
 const PREFIX = "h";
 const SERVER_NAME = "DESA TULUS";
 const COLOR = 0x7DBD77;
+const DESA_TULUS_EMOJI = "<a:Desa_Tulus2:1518502350363430932>";
+const DESA_TULUS_FOOTER = `${DESA_TULUS_EMOJI}  DESA TULUS |`;
 const DATA_DIR = path.join(__dirname, "data");
 const CONFIG_FILE = path.join(__dirname, "config.json");
 const AFK_FILE = path.join(DATA_DIR, "hansip-afk.json");
@@ -45,10 +47,10 @@ const REMOVED_OLD_FEATURE_COMMANDS = new Set([
 ]);
 
 const CUSTOM_STATUSES = [
-  "👀 Memantau Gerak-Gerik Warga",
-  "🛡️ Siaga Menjaga Lingkungan",
-  "🔦 Ronda Dulu, Ngopi Nanti",
-  "📢 Tertib Sebelum Ditegur"
+  `${DESA_TULUS_EMOJI} Memantau Gerak-Gerik Warga`,
+  `${DESA_TULUS_EMOJI} Siaga Menjaga Lingkungan`,
+  `${DESA_TULUS_EMOJI} Ronda Dulu, Ngopi Nanti`,
+  `${DESA_TULUS_EMOJI} Tertib Sebelum Ditegur`
 ];
 
 const DEFAULT_CONFIG = {
@@ -150,9 +152,9 @@ function cleanText(text = "") {
 function baseEmbed(title, description) {
   return new EmbedBuilder()
     .setColor(COLOR)
-    .setTitle(cleanText(title))
+    .setTitle(cleanText(String(title).startsWith(DESA_TULUS_EMOJI) ? title : `${DESA_TULUS_EMOJI} ${title}`))
     .setDescription(cleanText(description))
-    .setFooter({ text: "Pak Hansip • DESA TULUS" })
+    .setFooter({ text: DESA_TULUS_FOOTER })
     .setTimestamp();
 }
 
@@ -224,7 +226,7 @@ function afkVoiceHelp() {
 function afkVoiceStatusEmbed(status) {
   return new EmbedBuilder()
     .setColor(COLOR)
-    .setTitle("AFK Voice 24/7 Pak Hansip")
+    .setTitle(`${DESA_TULUS_EMOJI} AFK Voice 24/7 Pak Hansip`)
     .setDescription("Pak Hansip akan tetap berjaga di voice channel selama proses bot dan hosting aktif.")
     .addFields(
       { name: "Status", value: status.statusText || "-", inline: true },
@@ -237,7 +239,7 @@ function afkVoiceStatusEmbed(status) {
       { name: "Reconnect", value: `${status.reconnectAttempts || 0} percobaan`, inline: true },
       { name: "Last Error", value: status.lastError ? String(status.lastError).slice(0, 900) : "-", inline: false }
     )
-    .setFooter({ text: "Pak Hansip • AFK Voice Desa Tulus" })
+    .setFooter({ text: DESA_TULUS_FOOTER })
     .setTimestamp();
 }
 
@@ -439,24 +441,24 @@ async function runRoleAudit(guild, triggeredBy = null) {
 
   const summary = new EmbedBuilder()
     .setColor(color)
-    .setTitle("🛡️ Audit Role Cepat Hansip")
+    .setTitle(`${DESA_TULUS_EMOJI} 🛡️ Audit Role Cepat Hansip`)
     .setDescription("Pemeriksaan permission sensitif pada role server telah selesai.")
     .addFields(
       { name: "📌 Ringkasan", value: `Total role dicek: **${data.total}**\nRole aman: **${data.safe.length}**\nRole perlu dicek: **${data.medium.length}**\nRole berisiko tinggi: **${data.high.length}**\nRole bot/integrasi: **${data.bots.length}**` },
       { name: "🚨 Risiko Tinggi", value: roleList(data.high, "Tidak ada role berisiko tinggi.") },
       { name: "⚠️ Perlu Dicek", value: roleList(data.medium, "Tidak ada role yang perlu dicek.") }
     )
-    .setFooter({ text: "Pak Hansip • Audit Role Desa Tulus" })
+    .setFooter({ text: DESA_TULUS_FOOTER })
     .setTimestamp();
 
   const detail = new EmbedBuilder()
     .setColor(color)
-    .setTitle("📋 Detail Audit Role")
+    .setTitle(`${DESA_TULUS_EMOJI} 📋 Detail Audit Role`)
     .addFields(
       { name: "🤖 Role Bot / Integrasi", value: roleList(data.bots, "Tidak ada role bot/integrasi yang terdeteksi.") },
       { name: "✅ Catatan Hansip", value: "Pastikan role member biasa tidak punya permission sensitif.\nPastikan role bot hanya punya izin sesuai kebutuhan.\nPastikan role Pak Hansip berada di atas role yang perlu dikelola.\nHindari memberikan Administrator ke role yang tidak wajib." }
     )
-    .setFooter({ text: "Pak Hansip • Audit Role Desa Tulus" })
+    .setFooter({ text: DESA_TULUS_FOOTER })
     .setTimestamp();
 
   await channel.send({ embeds: [summary, detail] });

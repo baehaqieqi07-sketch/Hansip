@@ -40,5 +40,7 @@
   },
   "welcomeChannelId": "",
   "dashboardEnabled": true,
-  "dashboardPort": 3000
+  "dashboardPort": 3000,
+  "desaTulusEmoji": "<a:Desa_Tulus2:1518502350363430932>",
+  "footerText": "<a:Desa_Tulus2:1518502350363430932>  DESA TULUS |"
 }
