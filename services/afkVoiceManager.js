@@ -54,6 +54,11 @@ function createAfkVoiceManager(options) {
     return new Date().toISOString();
   }
 
+  function isAbortLikeError(error) {
+    const message = String(error?.message || error || "").toLowerCase();
+    return message.includes("aborted") || message.includes("abort");
+  }
+
   function getAfkVoiceConfig() {
     const config = getConfig();
     config.afkVoice = {
@@ -290,7 +295,7 @@ function createAfkVoiceManager(options) {
       });
 
       if (!manualDisconnect && !shuttingDown && afkVoice.autoReconnect) {
-        scheduleReconnect(error?.message || "connect error");
+        scheduleReconnect(isAbortLikeError(error) ? "voice operation aborted" : (error?.message || "connect error"));
       }
 
       return {
@@ -370,6 +375,7 @@ function createAfkVoiceManager(options) {
     const afkVoice = getAfkVoiceConfig();
 
     if (!afkVoice.channelId) {
+      await saveAfkVoiceConfig({ selfMute: Boolean(selfMute) }).catch(() => {});
       return { ok: false, message: "Pak Hansip sedang tidak berjaga di voice channel. Gunakan h24/7 #channel-voice terlebih dahulu." };
     }
 
@@ -384,6 +390,20 @@ function createAfkVoiceManager(options) {
       return { ok: true, already: true };
     }
 
+    // Jangan rejoin saat koneksi masih CONNECTING/RECONNECTING.
+    // Ini yang bisa memicu error "The operation was aborted" di Railway.
+    if (connectingLock || connection.state.status !== VoiceConnectionStatus.Ready) {
+      await saveAfkVoiceConfig({ selfMute: Boolean(selfMute) });
+
+      if (selfMute) {
+        logger.log("[AFK VOICE] Self mute Pak Hansip disimpan dan akan diterapkan setelah koneksi Ready.");
+      } else {
+        logger.log("[AFK VOICE] Self unmute Pak Hansip disimpan dan akan diterapkan setelah koneksi Ready.");
+      }
+
+      return { ok: true, pending: true };
+    }
+
     try {
       await saveAfkVoiceConfig({ selfMute: Boolean(selfMute) });
 
@@ -393,7 +413,7 @@ function createAfkVoiceManager(options) {
         selfDeaf: Boolean(afkVoice.selfDeaf)
       });
 
-      await entersState(connection, VoiceConnectionStatus.Ready, 15_000);
+      await entersState(connection, VoiceConnectionStatus.Ready, 20_000);
 
       if (selfMute) {
         logger.log("[AFK VOICE] Self mute Pak Hansip diaktifkan.");
@@ -405,6 +425,13 @@ function createAfkVoiceManager(options) {
     } catch (error) {
       logger.error("[AFK VOICE] Gagal mengubah mute:", error?.message || error);
       await saveAfkVoiceConfig({ lastError: error?.message || String(error) }).catch(() => {});
+
+      // Error aborted biasanya karena status voice sedang berganti. Jangan crash.
+      // Simpan setting mute lalu minta reconnect bila perlu.
+      if (isAbortLikeError(error)) {
+        return { ok: true, pending: true };
+      }
+
       return { ok: false, message: "Status mute Pak Hansip gagal diperbarui. Gunakan h24/7 reconnect, lalu coba kembali." };
     }
   }
@@ -413,6 +440,10 @@ function createAfkVoiceManager(options) {
     const afkVoice = getAfkVoiceConfig();
 
     if (!afkVoice.enabled || !afkVoice.autoReconnect || manualDisconnect || shuttingDown) {
+      return;
+    }
+
+    if (connectingLock) {
       return;
     }
 

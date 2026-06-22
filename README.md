@@ -77,3 +77,14 @@ Di versi ini:
 
 Jangan upload `package-lock.json` lama lagi.
 
+## Fix AFK Voice v9.3.2
+
+Fix untuk log Railway:
+
+```text
+[AFK VOICE] Gagal mengubah mute: The operation was aborted
+[AFK VOICE] Gagal terhubung: The operation was aborted
+```
+
+Penyebabnya biasanya command mute/unmute atau rejoin berjalan saat koneksi voice belum benar-benar Ready. Versi ini menyimpan status mute/unmute dulu, lalu menerapkannya setelah voice siap, jadi tidak memutus proses join.
+

@@ -1,0 +1,17 @@
+LAPORAN FIX AFK VOICE V9.3.2
+
+MASALAH
+- Railway menampilkan "The operation was aborted" ketika Pak Hansip sedang join voice lalu mute/unmute/rejoin terjadi terlalu cepat.
+
+FIX
+- hmute/hunmute tidak memaksa rejoin saat koneksi belum Ready.
+- Status mute/unmute tetap disimpan permanen.
+- Setelah reconnect/join sukses, setting selfMute dari config dipakai lagi.
+- Error aborted tidak membuat bot mati.
+- Reconnect timer tetap satu dan tidak spam.
+
+TETAP AMAN
+- Tidak ada audio player.
+- Tidak ada musik.
+- Tidak ada data reset.
+- Audit Role, dashboard, AFK, Mabar, Sambung Kata tetap ada.

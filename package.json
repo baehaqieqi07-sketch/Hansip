@@ -1,7 +1,7 @@
 {
   "name": "hansip",
-  "version": "9.3.1",
-  "description": "Pak Hansip DESA TULUS security center dengan fix Railway npm install tanpa package-lock stale.",
+  "version": "9.3.2",
+  "description": "Pak Hansip DESA TULUS security center dengan fix AFK Voice aborted/reconnect.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
