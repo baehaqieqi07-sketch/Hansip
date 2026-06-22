@@ -22,7 +22,8 @@ const PREFIX = "h";
 const SERVER_NAME = "DESA TULUS";
 const COLOR = 0x7DBD77;
 const DESA_TULUS_EMOJI = "<a:Desa_Tulus2:1518502350363430932>";
-const DESA_TULUS_FOOTER = `${DESA_TULUS_EMOJI}  DESA TULUS |`;
+const DESA_TULUS_FOOTER = "DESA TULUS |";
+const DESA_TULUS_FOOTER_ICON = "https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless";
 const DATA_DIR = path.join(__dirname, "data");
 const CONFIG_FILE = path.join(__dirname, "config.json");
 const AFK_FILE = path.join(DATA_DIR, "hansip-afk.json");
@@ -154,7 +155,7 @@ function baseEmbed(title, description) {
     .setColor(COLOR)
     .setTitle(cleanText(String(title).startsWith(DESA_TULUS_EMOJI) ? title : `${DESA_TULUS_EMOJI} ${title}`))
     .setDescription(cleanText(description))
-    .setFooter({ text: DESA_TULUS_FOOTER })
+    .setFooter({ text: DESA_TULUS_FOOTER, iconURL: DESA_TULUS_FOOTER_ICON })
     .setTimestamp();
 }
 
@@ -239,7 +240,7 @@ function afkVoiceStatusEmbed(status) {
       { name: "Reconnect", value: `${status.reconnectAttempts || 0} percobaan`, inline: true },
       { name: "Last Error", value: status.lastError ? String(status.lastError).slice(0, 900) : "-", inline: false }
     )
-    .setFooter({ text: DESA_TULUS_FOOTER })
+    .setFooter({ text: DESA_TULUS_FOOTER, iconURL: DESA_TULUS_FOOTER_ICON })
     .setTimestamp();
 }
 
@@ -448,7 +449,7 @@ async function runRoleAudit(guild, triggeredBy = null) {
       { name: "🚨 Risiko Tinggi", value: roleList(data.high, "Tidak ada role berisiko tinggi.") },
       { name: "⚠️ Perlu Dicek", value: roleList(data.medium, "Tidak ada role yang perlu dicek.") }
     )
-    .setFooter({ text: DESA_TULUS_FOOTER })
+    .setFooter({ text: DESA_TULUS_FOOTER, iconURL: DESA_TULUS_FOOTER_ICON })
     .setTimestamp();
 
   const detail = new EmbedBuilder()
@@ -458,7 +459,7 @@ async function runRoleAudit(guild, triggeredBy = null) {
       { name: "🤖 Role Bot / Integrasi", value: roleList(data.bots, "Tidak ada role bot/integrasi yang terdeteksi.") },
       { name: "✅ Catatan Hansip", value: "Pastikan role member biasa tidak punya permission sensitif.\nPastikan role bot hanya punya izin sesuai kebutuhan.\nPastikan role Pak Hansip berada di atas role yang perlu dikelola.\nHindari memberikan Administrator ke role yang tidak wajib." }
     )
-    .setFooter({ text: DESA_TULUS_FOOTER })
+    .setFooter({ text: DESA_TULUS_FOOTER, iconURL: DESA_TULUS_FOOTER_ICON })
     .setTimestamp();
 
   await channel.send({ embeds: [summary, detail] });

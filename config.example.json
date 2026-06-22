@@ -42,5 +42,6 @@
   "dashboardEnabled": true,
   "dashboardPort": 3000,
   "desaTulusEmoji": "<a:Desa_Tulus2:1518502350363430932>",
-  "footerText": "<a:Desa_Tulus2:1518502350363430932>  DESA TULUS |"
+  "footerText": "DESA TULUS |",
+  "footerIconUrl": "https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless"
 }

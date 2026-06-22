@@ -1,0 +1,15 @@
+LAPORAN FIX FOOTER EMOJI V9.3.5
+
+MASALAH
+- Custom emoji ditulis langsung di text footer.
+- Discord footer tidak render custom emoji tag sebagai GIF.
+- Akibatnya emoji muncul sebagai text mentah.
+
+FIX
+- Footer text: DESA TULUS |
+- Footer iconURL: https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless
+- Semua setFooter di index.js memakai:
+  .setFooter({ text: DESA_TULUS_FOOTER, iconURL: DESA_TULUS_FOOTER_ICON })
+
+EMOJI TAG
+<a:Desa_Tulus2:1518502350363430932>

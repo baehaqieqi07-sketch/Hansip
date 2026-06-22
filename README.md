@@ -98,3 +98,16 @@ Railway kadang membatalkan proses `Ready` voice karena handshake voice/UDP, wala
 - Owner bisa cek `h24/7 status`.
 - Gunakan `h24/7 reconnect` jika bot belum terlihat di voice setelah permission dicek.
 
+## Fix Footer Emoji v9.3.5
+
+Discord tidak merender custom emoji kalau custom emoji ditulis langsung sebagai text footer. Karena itu footer sekarang memakai:
+
+- Text footer: `DESA TULUS |`
+- Icon footer: `https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless`
+
+Custom emoji tetap bisa dipakai di title/description/content:
+
+```text
+<a:Desa_Tulus2:1518502350363430932>
+```
+

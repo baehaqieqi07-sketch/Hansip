@@ -4,7 +4,7 @@ EMOJI WAJIB:
 <a:Desa_Tulus2:1518502350363430932>
 
 FORMAT FOOTER WAJIB:
-<a:Desa_Tulus2:1518502350363430932>  DESA TULUS |
+DESA TULUS |
 
 HASIL:
 - Semua custom emoji lama diganti.
