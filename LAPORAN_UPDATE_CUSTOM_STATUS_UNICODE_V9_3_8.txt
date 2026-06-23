@@ -1,0 +1,12 @@
+LAPORAN UPDATE CUSTOM STATUS V9.3.8
+
+STATUS BARU
+- 👀 Memantau Gerak-Gerik Warga
+- 🛡️ Siaga Menjaga Lingkungan
+- 🔦 Ronda Dulu, Ngopi Nanti
+- 📢 Tertib Sebelum Ditegur
+
+CATATAN
+- Ini memakai emoji Unicode biasa.
+- Bukan custom emoji Discord <a:...>.
+- Aman untuk status profil bot, tidak muncul sebagai teks mentah.

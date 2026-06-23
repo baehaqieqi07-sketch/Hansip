@@ -1,0 +1,15 @@
+LAPORAN FIX CUSTOM STATUS RAW EMOJI V9.3.6
+
+MASALAH
+- Custom emoji tag masuk ke Activity/Custom Status.
+- Discord tidak render custom emoji di area status profil bot.
+- Akibatnya muncul teks mentah.
+
+FIX
+- CUSTOM_STATUSES dibuat tanpa custom emoji tag.
+- cleanActivityState() ditambahkan untuk membersihkan custom emoji mentah.
+- Footer tetap memakai iconURL GIF.
+- Embed title/description tetap bisa memakai custom emoji tag.
+
+HASIL
+- Profil bot tidak menampilkan teks mentah emoji lagi.

@@ -111,3 +111,21 @@ Custom emoji tetap bisa dipakai di title/description/content:
 <a:Desa_Tulus2:1518502350363430932>
 ```
 
+## Fix Custom Status v9.3.6
+
+Discord tidak merender custom emoji tag di bot Custom Status / Activity. Kalau dipaksa, profil bot akan menampilkan teks mentah seperti `<a:NamaEmoji:ID>`.
+
+Karena itu:
+- Custom status dibuat text bersih tanpa custom emoji tag.
+- Embed title/description tetap boleh memakai custom emoji.
+- Footer embed tetap memakai `iconURL` GIF, bukan text `<a:...>`.
+
+## Update Custom Status v9.3.8
+
+Custom status sekarang memakai emoji Unicode biasa, bukan custom emoji Discord mentah:
+
+- 👀 Memantau Gerak-Gerik Warga
+- 🛡️ Siaga Menjaga Lingkungan
+- 🔦 Ronda Dulu, Ngopi Nanti
+- 📢 Tertib Sebelum Ditegur
+

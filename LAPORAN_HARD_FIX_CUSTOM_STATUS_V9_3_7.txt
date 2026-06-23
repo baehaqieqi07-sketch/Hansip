@@ -1,0 +1,16 @@
+LAPORAN HARD FIX CUSTOM STATUS V9.3.7
+
+MASALAH
+- Status profil bot masih menampilkan teks mentah emoji custom.
+- Discord activity/custom status tidak support custom emoji tag.
+
+FIX
+- CUSTOM_STATUSES dibuat plain text only.
+- Tambah hardCleanDiscordActivity().
+- Semua pola <a:...:id>, Desa_Tulus2:id, Desa_Tulus:id dibersihkan dari status.
+- Presence lama dikosongkan dulu dengan activities: [] sebelum status baru dipasang.
+- Footer embed tetap memakai iconURL GIF, bukan raw text emoji.
+
+HASIL
+- Status profil tidak lagi menampilkan teks mentah emoji.
+- Embed/footer tetap aman.

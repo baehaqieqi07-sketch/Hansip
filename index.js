@@ -48,10 +48,10 @@ const REMOVED_OLD_FEATURE_COMMANDS = new Set([
 ]);
 
 const CUSTOM_STATUSES = [
-  `${DESA_TULUS_EMOJI} Memantau Gerak-Gerik Warga`,
-  `${DESA_TULUS_EMOJI} Siaga Menjaga Lingkungan`,
-  `${DESA_TULUS_EMOJI} Ronda Dulu, Ngopi Nanti`,
-  `${DESA_TULUS_EMOJI} Tertib Sebelum Ditegur`
+  "👀 Memantau Gerak-Gerik Warga",
+  "🛡️ Siaga Menjaga Lingkungan",
+  "🔦 Ronda Dulu, Ngopi Nanti",
+  "📢 Tertib Sebelum Ditegur"
 ];
 
 const DEFAULT_CONFIG = {
@@ -176,12 +176,29 @@ function isStaff(message) {
   return Boolean(config.staffRoleId && message.member.roles.cache.has(config.staffRoleId));
 }
 
+function hardCleanDiscordActivity(state = "") {
+  return String(state)
+    .replace(/<a?:[A-Za-z0-9_]+:\d+>/g, "")
+    .replace(/Desa_Tulus2:?\d*/gi, "")
+    .replace(/Desa_Tulus:?\d*/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function cleanActivityState(state = "") {
+  return hardCleanDiscordActivity(state);
+}
+
 function startCustomStatus(client) {
   if (customStatusInterval) clearInterval(customStatusInterval);
+
+  try {
+    client.user.setPresence({ activities: [], status: "online" });
+  } catch (_) {}
   customStatusIndex = 0;
 
   const update = () => {
-    const state = CUSTOM_STATUSES[customStatusIndex % CUSTOM_STATUSES.length];
+    const state = hardCleanDiscordActivity(CUSTOM_STATUSES[customStatusIndex % CUSTOM_STATUSES.length]);
     client.user.setPresence({
       status: "online",
       activities: [{ type: ActivityType.Custom, name: "Custom Status", state }]

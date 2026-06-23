@@ -43,5 +43,13 @@
   "dashboardPort": 3000,
   "desaTulusEmoji": "<a:Desa_Tulus2:1518502350363430932>",
   "footerText": "DESA TULUS |",
-  "footerIconUrl": "https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless"
+  "footerIconUrl": "https://cdn.discordapp.com/emojis/1518502350363430932.gif?size=64&quality=lossless",
+  "activityUsesCustomEmoji": false,
+  "activityStatusMode": "unicode_emoji_only",
+  "activityStatuses": [
+    "👀 Memantau Gerak-Gerik Warga",
+    "🛡️ Siaga Menjaga Lingkungan",
+    "🔦 Ronda Dulu, Ngopi Nanti",
+    "📢 Tertib Sebelum Ditegur"
+  ]
 }
